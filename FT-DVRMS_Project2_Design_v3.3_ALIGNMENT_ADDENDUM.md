@@ -4,8 +4,11 @@
 This addendum is the implementation authority for team alignment across:
 - `Project.6231w26.txt` (project requirement source)
 - `FT-DVRMS_Project2_Design_v3.3.docx` (approved design)
-- `PROJECT2_GROUP_IMPLEMENTATION_GUIDE.md`
-- `PROJECT2_STUDENT_EXTENSION_IMPLEMENTATION_GUIDE.md`
+- `PROJECT2_SHARED_CONFIG_IMPLEMENTATION.md`
+- `PROJECT2_STUDENT1_IMPLEMENTATION.md`
+- `PROJECT2_STUDENT2_IMPLEMENTATION.md`
+- `PROJECT2_STUDENT3_IMPLEMENTATION.md`
+- `PROJECT2_STUDENT4_IMPLEMENTATION.md`
 
 The `.docx` remains unchanged. This addendum resolves only practical wording/contract drift.
 
