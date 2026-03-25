@@ -268,7 +268,13 @@ public class ReplicaManager {
      * @param socket the RM's listener socket used for sending votes
      */
     protected void handleByzantineReplace(UDPMessage msg, DatagramSocket socket) {
+        if (msg.fieldCount() < 1) {
+            return;
+        }
         String faultyReplicaId = normalizeReplicaId(msg.getField(0));
+        if (faultyReplicaId == null || faultyReplicaId.isEmpty()) {
+            return;
+        }
         System.out.println("RM" + replicaId + ": Byzantine replace requested for " + faultyReplicaId);
 
         // Broadcast VOTE_BYZANTINE to all RMs (including self) for consensus
@@ -295,6 +301,9 @@ public class ReplicaManager {
      * @param socket the RM's listener socket used for sending votes
      */
     protected void handleCrashSuspect(UDPMessage msg, DatagramSocket socket) {
+        if (msg.fieldCount() < 3) {
+            return;
+        }
         String suspectedId = normalizeReplicaId(msg.getField(2)); // field(2) = suspectedReplicaId
         if (suspectedId == null || suspectedId.isEmpty()) {
             return;

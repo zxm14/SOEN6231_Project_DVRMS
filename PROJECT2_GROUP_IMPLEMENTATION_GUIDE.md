@@ -1127,7 +1127,9 @@ public class ReplicaManager {
     // ===== Byzantine replacement (design doc §3.2) =====
 
     private void handleByzantineReplace(UDPMessage msg, DatagramSocket socket) {
+        if (msg.fieldCount() < 1) return; // malformed REPLACE_REQUEST
         String faultyReplicaId = msg.getField(0);
+        if (faultyReplicaId == null || faultyReplicaId.isEmpty()) return;
         System.out.println("RM" + replicaId + ": Byzantine replace requested for " + faultyReplicaId);
 
         // Broadcast VOTE_BYZANTINE to all RMs (plain UDP — receivers don't ACK)
@@ -1142,6 +1144,7 @@ public class ReplicaManager {
     }
 
     private void handleCrashSuspect(UDPMessage msg, DatagramSocket socket) {
+        if (msg.fieldCount() < 3) return; // malformed CRASH_SUSPECT
         // CRASH_SUSPECT:reqID:seqNum:replicaID (§4.4)
         String suspectedId = msg.getField(2);
         // Heartbeat the suspected replica's port, not our own

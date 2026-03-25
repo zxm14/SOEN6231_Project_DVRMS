@@ -16,6 +16,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -70,6 +71,19 @@ class ReplicaManagerBehaviorTest {
 
         assertFalse(rm.replacementTriggered.await(250, TimeUnit.MILLISECONDS));
         assertFalse(rm.replaced.get());
+    }
+
+    @Test
+    void malformedFaultNotifications_areIgnoredWithoutExceptions() throws Exception {
+        VoteTestReplicaManager rm = new VoteTestReplicaManager(2);
+        try (DatagramSocket outbound = new DatagramSocket()) {
+            assertDoesNotThrow(() ->
+                rm.handleByzantineReplaceDirect(new UDPMessage(UDPMessage.Type.REPLACE_REQUEST), outbound));
+            assertDoesNotThrow(() ->
+                rm.handleCrashSuspectDirect(
+                    new UDPMessage(UDPMessage.Type.CRASH_SUSPECT, "REQ-1", "5"), outbound));
+        }
+        assertEquals(-1, rm.lastHeartbeatTargetPort);
     }
 
     @Test
@@ -161,6 +175,10 @@ class ReplicaManagerBehaviorTest {
 
         void handleCrashSuspectDirect(UDPMessage msg, DatagramSocket socket) {
             handleCrashSuspect(msg, socket);
+        }
+
+        void handleByzantineReplaceDirect(UDPMessage msg, DatagramSocket socket) {
+            handleByzantineReplace(msg, socket);
         }
 
         void sendAckForFaultNotification(

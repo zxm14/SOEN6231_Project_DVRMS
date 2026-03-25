@@ -342,6 +342,9 @@ private void handleVote(UDPMessage msg, DatagramSocket socket) {
 
 ```java
 private void handleCrashSuspect(UDPMessage msg, DatagramSocket socket) {
+    if (msg.fieldCount() < 3) {
+        return; // malformed CRASH_SUSPECT
+    }
     String suspectedId = msg.getField(2); // CRASH_SUSPECT:reqID:seqNum:suspectedID (§4.4)
     // Heartbeat the suspected replica's port, not our own
     int suspectedPort = PortConfig.ALL_REPLICAS[Integer.parseInt(suspectedId) - 1];
@@ -494,8 +497,8 @@ private String requestStateFromHealthyReplica() {
 - [ ] Steps summary:
   1. Monitor co-located replica health via `heartbeatLoop()` (3s interval, 2s timeout).
   2. Listen on RM port (7001–7004) for FE notifications and RM votes. Keep per-packet parse/dispatch in `try/catch` so malformed UDP packets are logged and ignored.
-  3. On `CRASH_SUSPECT`: verify by heartbeating the suspected replica, broadcast `VOTE_CRASH` to all RMs.
-  4. On `REPLACE_REQUEST`: broadcast `VOTE_BYZANTINE` to all RMs.
+  3. On `CRASH_SUSPECT`: validate required fields first, then verify by heartbeating the suspected replica and broadcast `VOTE_CRASH` to all RMs.
+  4. On `REPLACE_REQUEST`: validate required fields first, then broadcast `VOTE_BYZANTINE` to all RMs.
   5. `handleVote()`: collect votes, require strict majority of reachable RMs.
   6. On approved replacement: `killReplica()` (Byzantine) or skip (crash), then `launchReplica()`.
   7. State transfer: `STATE_REQUEST` → healthy RM → snapshot → `INIT_STATE` to new replica.
