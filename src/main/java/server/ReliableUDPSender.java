@@ -7,7 +7,7 @@ public class ReliableUDPSender {
 
     private static final int BUFFER_SIZE = 8192;
     private static final int INITIAL_TIMEOUT_MS = 500;
-    private static final int MAX_ATTEMPTS = 5;
+    private static final int MAX_RETRIES = 5;
 
     /**
      * Send a message and wait for ACK. Retries with exponential backoff.
@@ -18,7 +18,7 @@ public class ReliableUDPSender {
         DatagramPacket packet = new DatagramPacket(data, data.length, address, port);
 
         int timeout = INITIAL_TIMEOUT_MS;
-        for (int attempt = 0; attempt < MAX_ATTEMPTS; attempt++) {
+        for (int attempt = 0; attempt <= MAX_RETRIES; attempt++) {
             try {
                 socket.send(packet);
                 socket.setSoTimeout(timeout);
