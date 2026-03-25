@@ -64,7 +64,6 @@ public class ReplicaManager {
      */
     private final ConcurrentHashMap<String, ConcurrentHashMap<String, String>> voteCollector =
         new ConcurrentHashMap<>();
-    private final ConcurrentHashMap<String, Long> voteWindowStart = new ConcurrentHashMap<>();
     private final ConcurrentHashMap.KeySetView<String, Boolean> scheduledVoteEvaluation =
         ConcurrentHashMap.newKeySet();
 
@@ -384,7 +383,6 @@ public class ReplicaManager {
         // Record this vote keyed by the sender's RM identity
         voteCollector.computeIfAbsent(voteKey, k -> new ConcurrentHashMap<>())
             .put("RM" + voterId, voterDecision);
-        voteWindowStart.putIfAbsent(voteKey, System.currentTimeMillis());
 
         if (scheduledVoteEvaluation.add(voteKey)) {
             Thread evaluator = new Thread(() -> {
@@ -408,7 +406,6 @@ public class ReplicaManager {
 
     protected void evaluateVoteWindow(String voteKey) {
         ConcurrentHashMap<String, String> votes = voteCollector.remove(voteKey);
-        voteWindowStart.remove(voteKey);
         if (votes == null || votes.isEmpty()) {
             return;
         }
