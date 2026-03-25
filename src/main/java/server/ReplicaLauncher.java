@@ -56,11 +56,11 @@ public class ReplicaLauncher {
 
                         String officeId = extractTargetOffice(op.toString());
                         VehicleReservationWS target = offices.getOrDefault(officeId, mtl);
-                        target.handleExecute(seqNum, reqID, feHost, fePort, op.toString());
+                        String result = target.handleExecute(seqNum, reqID, feHost, fePort, op.toString());
 
-                        // Send ACK back to Sequencer
-                        String ack = "ACK:" + seqNum;
-                        byte[] ackData = ack.getBytes(StandardCharsets.UTF_8);
+                        // Send ACK (or NACK if a sequence gap was detected) back to Sequencer
+                        String reply = (result != null && result.startsWith("NACK:")) ? result : "ACK:" + seqNum;
+                        byte[] ackData = reply.getBytes(StandardCharsets.UTF_8);
                         socket.send(new DatagramPacket(ackData, ackData.length,
                             packet.getAddress(), packet.getPort()));
                         break;
