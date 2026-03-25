@@ -1098,31 +1098,31 @@ public class ReplicaManager {
         String faultyReplicaId = msg.getField(0);
         System.out.println("RM" + replicaId + ": Byzantine replace requested for " + faultyReplicaId);
 
-        // Broadcast VOTE_BYZANTINE to all RMs
+        // Broadcast VOTE_BYZANTINE to all RMs (plain UDP — receivers don't ACK)
+        String vote = "VOTE_BYZANTINE:" + faultyReplicaId + ":" + replicaId;
+        byte[] data = vote.getBytes(StandardCharsets.UTF_8);
         for (int rmPort : PortConfig.ALL_RMS) {
             try {
-                sender.send("VOTE_BYZANTINE:" + faultyReplicaId,
-                    InetAddress.getByName("localhost"), rmPort, socket);
+                socket.send(new DatagramPacket(data, data.length,
+                    InetAddress.getByName("localhost"), rmPort));
             } catch (Exception e) { /* log */ }
         }
-
-        // Collect votes — need strict majority of responding RMs
-        // If majority agrees → kill old replica → launch new → state transfer
-        // (Implementation: count ACKs with VOTE_BYZANTINE:AGREE responses)
     }
 
     private void handleCrashSuspect(UDPMessage msg, DatagramSocket socket) {
         // CRASH_SUSPECT:reqID:seqNum:replicaID (§4.4)
         String suspectedId = msg.getField(2);
-        // Verify by heartbeat
-        boolean alive = sendHeartbeat();
-        // Send vote to all RMs: VOTE_CRASH:suspectedId:verdict
+        // Heartbeat the suspected replica's port, not our own
+        int suspectedPort = PortConfig.ALL_REPLICAS[Integer.parseInt(suspectedId) - 1];
+        boolean alive = sendHeartbeatTo(suspectedPort);
+        // Broadcast vote to all RMs (plain UDP, includes voter ID)
         String vote = "VOTE_CRASH:" + suspectedId + ":"
-            + (alive ? "ALIVE" : "CRASH_CONFIRMED");
+            + (alive ? "ALIVE" : "CRASH_CONFIRMED") + ":" + replicaId;
+        byte[] voteData = vote.getBytes(StandardCharsets.UTF_8);
         for (int rmPort : PortConfig.ALL_RMS) {
             try {
-                sender.send(vote,
-                    InetAddress.getByName("localhost"), rmPort, socket);
+                socket.send(new DatagramPacket(voteData, voteData.length,
+                    InetAddress.getByName("localhost"), rmPort));
             } catch (Exception e) { /* log */ }
         }
     }

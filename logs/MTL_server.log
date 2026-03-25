@@ -639,3 +639,243 @@
 [2026-03-24 20:56:54] [MTL] MTL initialized with 6 unique vehicles
 [2026-03-24 20:56:54] [MTL] Dummy database initialization complete. Total vehicles: 6
 [2026-03-24 20:56:54] [MTL] Server started. UDP Port: 5001
+[2026-03-24 23:59:13] [MTL] Initializing dummy database for MTL server...
+[2026-03-24 23:59:13] [MTL] Initializing dummy database for MTL server...
+[2026-03-24 23:59:13] [MTL] Initializing dummy database for MTL server...
+[2026-03-24 23:59:13] [MTL] Initializing dummy database for MTL server...
+[2026-03-24 23:59:13] [MTL] Added dummy vehicle: MTL1001 (Sedan) @ $80.0
+[2026-03-24 23:59:13] [MTL] Added dummy vehicle: MTL1001 (Sedan) @ $80.0
+[2026-03-24 23:59:13] [MTL] Added dummy vehicle: MTL1001 (Sedan) @ $80.0
+[2026-03-24 23:59:13] [MTL] Added dummy vehicle: MTL1002 (Sedan) @ $85.0
+[2026-03-24 23:59:13] [MTL] Added dummy vehicle: MTL1001 (Sedan) @ $80.0
+[2026-03-24 23:59:13] [MTL] Added dummy vehicle: MTL1002 (Sedan) @ $85.0
+[2026-03-24 23:59:13] [MTL] Added dummy vehicle: MTL1002 (Sedan) @ $85.0
+[2026-03-24 23:59:13] [MTL] Added dummy vehicle: MTL1003 (Sedan) @ $90.0
+[2026-03-24 23:59:13] [MTL] Added dummy vehicle: MTL1002 (Sedan) @ $85.0
+[2026-03-24 23:59:13] [MTL] Added dummy vehicle: MTL1003 (Sedan) @ $90.0
+[2026-03-24 23:59:13] [MTL] Added dummy vehicle: MTL2001 (SUV) @ $120.0
+[2026-03-24 23:59:13] [MTL] Added dummy vehicle: MTL2001 (SUV) @ $120.0
+[2026-03-24 23:59:13] [MTL] Added dummy vehicle: MTL2002 (SUV) @ $130.0
+[2026-03-24 23:59:13] [MTL] Added dummy vehicle: MTL2002 (SUV) @ $130.0
+[2026-03-24 23:59:13] [MTL] Added dummy vehicle: MTL3001 (Truck) @ $150.0
+[2026-03-24 23:59:13] [MTL] Added dummy vehicle: MTL3001 (Truck) @ $150.0
+[2026-03-24 23:59:13] [MTL] MTL initialized with 6 unique vehicles
+[2026-03-24 23:59:13] [MTL] MTL initialized with 6 unique vehicles
+[2026-03-24 23:59:13] [MTL] Dummy database initialization complete. Total vehicles: 6
+[2026-03-24 23:59:13] [MTL] Dummy database initialization complete. Total vehicles: 6
+[2026-03-24 23:59:13] [MTL] Added dummy vehicle: MTL1003 (Sedan) @ $90.0
+[2026-03-24 23:59:13] [MTL] Added dummy vehicle: MTL1003 (Sedan) @ $90.0
+[2026-03-24 23:59:13] [MTL] Added dummy vehicle: MTL2001 (SUV) @ $120.0
+[2026-03-24 23:59:13] [MTL] Added dummy vehicle: MTL2001 (SUV) @ $120.0
+[2026-03-24 23:59:13] [MTL] Added dummy vehicle: MTL2002 (SUV) @ $130.0
+[2026-03-24 23:59:13] [MTL] Added dummy vehicle: MTL2002 (SUV) @ $130.0
+[2026-03-24 23:59:13] [MTL] Added dummy vehicle: MTL3001 (Truck) @ $150.0
+[2026-03-24 23:59:13] [MTL] Added dummy vehicle: MTL3001 (Truck) @ $150.0
+[2026-03-24 23:59:13] [MTL] MTL initialized with 6 unique vehicles
+[2026-03-24 23:59:13] [MTL] MTL initialized with 6 unique vehicles
+[2026-03-24 23:59:13] [MTL] Dummy database initialization complete. Total vehicles: 6
+[2026-03-24 23:59:13] [MTL] Dummy database initialization complete. Total vehicles: 6
+[2026-03-24 23:59:13] [MTL] Server started. UDP Port: 5011
+[2026-03-24 23:59:13] [MTL] Server started. UDP Port: 5021
+[2026-03-24 23:59:13] [MTL] Server started. UDP Port: 5031
+[2026-03-24 23:59:13] [MTL] Server started. UDP Port: 5001
+[2026-03-24 23:59:14] [MTL] Initializing dummy database for MTL server...
+[2026-03-24 23:59:14] [MTL] Added dummy vehicle: MTL1001 (Sedan) @ $80.0
+[2026-03-24 23:59:14] [MTL] Added dummy vehicle: MTL1002 (Sedan) @ $85.0
+[2026-03-24 23:59:14] [MTL] Added dummy vehicle: MTL1003 (Sedan) @ $90.0
+[2026-03-24 23:59:14] [MTL] Added dummy vehicle: MTL2001 (SUV) @ $120.0
+[2026-03-24 23:59:14] [MTL] Added dummy vehicle: MTL2002 (SUV) @ $130.0
+[2026-03-24 23:59:14] [MTL] Added dummy vehicle: MTL3001 (Truck) @ $150.0
+[2026-03-24 23:59:14] [MTL] MTL initialized with 6 unique vehicles
+[2026-03-24 23:59:14] [MTL] Dummy database initialization complete. Total vehicles: 6
+[2026-03-24 23:59:14] [MTL] Initializing dummy database for MTL server...
+[2026-03-24 23:59:14] [MTL] Initializing dummy database for MTL server...
+[2026-03-24 23:59:14] [MTL] Server started. UDP Port: 5021
+[2026-03-24 23:59:14] [MTL] Added dummy vehicle: MTL1001 (Sedan) @ $80.0
+[2026-03-24 23:59:14] [MTL] Added dummy vehicle: MTL1002 (Sedan) @ $85.0
+[2026-03-24 23:59:14] [MTL] Added dummy vehicle: MTL1003 (Sedan) @ $90.0
+[2026-03-24 23:59:14] [MTL] Added dummy vehicle: MTL2001 (SUV) @ $120.0
+[2026-03-24 23:59:14] [MTL] Added dummy vehicle: MTL2002 (SUV) @ $130.0
+[2026-03-24 23:59:14] [MTL] Added dummy vehicle: MTL3001 (Truck) @ $150.0
+[2026-03-24 23:59:14] [MTL] Added dummy vehicle: MTL1001 (Sedan) @ $80.0
+[2026-03-24 23:59:14] [MTL] Added dummy vehicle: MTL1002 (Sedan) @ $85.0
+[2026-03-24 23:59:14] [MTL] Added dummy vehicle: MTL1003 (Sedan) @ $90.0
+[2026-03-24 23:59:14] [MTL] Added dummy vehicle: MTL2001 (SUV) @ $120.0
+[2026-03-24 23:59:14] [MTL] Added dummy vehicle: MTL2002 (SUV) @ $130.0
+[2026-03-24 23:59:14] [MTL] MTL initialized with 6 unique vehicles
+[2026-03-24 23:59:14] [MTL] Added dummy vehicle: MTL3001 (Truck) @ $150.0
+[2026-03-24 23:59:14] [MTL] Dummy database initialization complete. Total vehicles: 6
+[2026-03-24 23:59:14] [MTL] MTL initialized with 6 unique vehicles
+[2026-03-24 23:59:14] [MTL] Dummy database initialization complete. Total vehicles: 6
+[2026-03-24 23:59:14] [MTL] Server started. UDP Port: 5031
+[2026-03-24 23:59:14] [MTL] Server started. UDP Port: 5011
+[2026-03-24 23:59:14] [MTL] Initializing dummy database for MTL server...
+[2026-03-24 23:59:14] [MTL] Added dummy vehicle: MTL1001 (Sedan) @ $80.0
+[2026-03-24 23:59:14] [MTL] Added dummy vehicle: MTL1002 (Sedan) @ $85.0
+[2026-03-24 23:59:14] [MTL] Added dummy vehicle: MTL1003 (Sedan) @ $90.0
+[2026-03-24 23:59:14] [MTL] Added dummy vehicle: MTL2001 (SUV) @ $120.0
+[2026-03-24 23:59:14] [MTL] Added dummy vehicle: MTL2002 (SUV) @ $130.0
+[2026-03-24 23:59:14] [MTL] Added dummy vehicle: MTL3001 (Truck) @ $150.0
+[2026-03-24 23:59:14] [MTL] MTL initialized with 6 unique vehicles
+[2026-03-24 23:59:14] [MTL] Dummy database initialization complete. Total vehicles: 6
+[2026-03-24 23:59:14] [MTL] Server started. UDP Port: 5001
+[2026-03-25 00:02:28] [MTL] Initializing dummy database for MTL server...
+[2026-03-25 00:02:28] [MTL] Initializing dummy database for MTL server...
+[2026-03-25 00:02:28] [MTL] Initializing dummy database for MTL server...
+[2026-03-25 00:02:28] [MTL] Initializing dummy database for MTL server...
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL1001 (Sedan) @ $80.0
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL1001 (Sedan) @ $80.0
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL1002 (Sedan) @ $85.0
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL1002 (Sedan) @ $85.0
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL1003 (Sedan) @ $90.0
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL1003 (Sedan) @ $90.0
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL2001 (SUV) @ $120.0
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL2001 (SUV) @ $120.0
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL2002 (SUV) @ $130.0
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL2002 (SUV) @ $130.0
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL3001 (Truck) @ $150.0
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL1001 (Sedan) @ $80.0
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL1001 (Sedan) @ $80.0
+[2026-03-25 00:02:28] [MTL] MTL initialized with 6 unique vehicles
+[2026-03-25 00:02:28] [MTL] Dummy database initialization complete. Total vehicles: 6
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL1002 (Sedan) @ $85.0
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL3001 (Truck) @ $150.0
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL1003 (Sedan) @ $90.0
+[2026-03-25 00:02:28] [MTL] Server started. UDP Port: 5031
+[2026-03-25 00:02:28] [MTL] MTL initialized with 6 unique vehicles
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL2001 (SUV) @ $120.0
+[2026-03-25 00:02:28] [MTL] Dummy database initialization complete. Total vehicles: 6
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL2002 (SUV) @ $130.0
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL3001 (Truck) @ $150.0
+[2026-03-25 00:02:28] [MTL] MTL initialized with 6 unique vehicles
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL1002 (Sedan) @ $85.0
+[2026-03-25 00:02:28] [MTL] Dummy database initialization complete. Total vehicles: 6
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL1003 (Sedan) @ $90.0
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL2001 (SUV) @ $120.0
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL2002 (SUV) @ $130.0
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL3001 (Truck) @ $150.0
+[2026-03-25 00:02:28] [MTL] MTL initialized with 6 unique vehicles
+[2026-03-25 00:02:28] [MTL] Dummy database initialization complete. Total vehicles: 6
+[2026-03-25 00:02:28] [MTL] Server started. UDP Port: 5021
+[2026-03-25 00:02:28] [MTL] Server started. UDP Port: 5011
+[2026-03-25 00:02:28] [MTL] Server started. UDP Port: 5001
+[2026-03-25 00:02:28] [MTL] Initializing dummy database for MTL server...
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL1001 (Sedan) @ $80.0
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL1002 (Sedan) @ $85.0
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL1003 (Sedan) @ $90.0
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL2001 (SUV) @ $120.0
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL2002 (SUV) @ $130.0
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL3001 (Truck) @ $150.0
+[2026-03-25 00:02:28] [MTL] MTL initialized with 6 unique vehicles
+[2026-03-25 00:02:28] [MTL] Dummy database initialization complete. Total vehicles: 6
+[2026-03-25 00:02:28] [MTL] Server started. UDP Port: 5001
+[2026-03-25 00:02:28] [MTL] Initializing dummy database for MTL server...
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL1001 (Sedan) @ $80.0
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL1002 (Sedan) @ $85.0
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL1003 (Sedan) @ $90.0
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL2001 (SUV) @ $120.0
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL2002 (SUV) @ $130.0
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL3001 (Truck) @ $150.0
+[2026-03-25 00:02:28] [MTL] MTL initialized with 6 unique vehicles
+[2026-03-25 00:02:28] [MTL] Dummy database initialization complete. Total vehicles: 6
+[2026-03-25 00:02:28] [MTL] Server started. UDP Port: 5021
+[2026-03-25 00:02:28] [MTL] Initializing dummy database for MTL server...
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL1001 (Sedan) @ $80.0
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL1002 (Sedan) @ $85.0
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL1003 (Sedan) @ $90.0
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL2001 (SUV) @ $120.0
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL2002 (SUV) @ $130.0
+[2026-03-25 00:02:28] [MTL] Added dummy vehicle: MTL3001 (Truck) @ $150.0
+[2026-03-25 00:02:28] [MTL] MTL initialized with 6 unique vehicles
+[2026-03-25 00:02:28] [MTL] Dummy database initialization complete. Total vehicles: 6
+[2026-03-25 00:02:29] [MTL] Server started. UDP Port: 5011
+[2026-03-25 00:02:29] [MTL] Initializing dummy database for MTL server...
+[2026-03-25 00:02:29] [MTL] Added dummy vehicle: MTL1001 (Sedan) @ $80.0
+[2026-03-25 00:02:29] [MTL] Added dummy vehicle: MTL1002 (Sedan) @ $85.0
+[2026-03-25 00:02:29] [MTL] Added dummy vehicle: MTL1003 (Sedan) @ $90.0
+[2026-03-25 00:02:29] [MTL] Added dummy vehicle: MTL2001 (SUV) @ $120.0
+[2026-03-25 00:02:29] [MTL] Added dummy vehicle: MTL2002 (SUV) @ $130.0
+[2026-03-25 00:02:29] [MTL] Added dummy vehicle: MTL3001 (Truck) @ $150.0
+[2026-03-25 00:02:29] [MTL] MTL initialized with 6 unique vehicles
+[2026-03-25 00:02:29] [MTL] Dummy database initialization complete. Total vehicles: 6
+[2026-03-25 00:02:29] [MTL] Server started. UDP Port: 5031
+[2026-03-25 00:02:40] [MTL] Initializing dummy database for MTL server...
+[2026-03-25 00:02:40] [MTL] Initializing dummy database for MTL server...
+[2026-03-25 00:02:40] [MTL] Initializing dummy database for MTL server...
+[2026-03-25 00:02:40] [MTL] Initializing dummy database for MTL server...
+[2026-03-25 00:02:40] [MTL] Added dummy vehicle: MTL1001 (Sedan) @ $80.0
+[2026-03-25 00:02:40] [MTL] Added dummy vehicle: MTL1002 (Sedan) @ $85.0
+[2026-03-25 00:02:40] [MTL] Added dummy vehicle: MTL1001 (Sedan) @ $80.0
+[2026-03-25 00:02:40] [MTL] Added dummy vehicle: MTL1003 (Sedan) @ $90.0
+[2026-03-25 00:02:40] [MTL] Added dummy vehicle: MTL2001 (SUV) @ $120.0
+[2026-03-25 00:02:40] [MTL] Added dummy vehicle: MTL1002 (Sedan) @ $85.0
+[2026-03-25 00:02:40] [MTL] Added dummy vehicle: MTL2002 (SUV) @ $130.0
+[2026-03-25 00:02:40] [MTL] Added dummy vehicle: MTL1003 (Sedan) @ $90.0
+[2026-03-25 00:02:40] [MTL] Added dummy vehicle: MTL1001 (Sedan) @ $80.0
+[2026-03-25 00:02:40] [MTL] Added dummy vehicle: MTL3001 (Truck) @ $150.0
+[2026-03-25 00:02:40] [MTL] Added dummy vehicle: MTL2001 (SUV) @ $120.0
+[2026-03-25 00:02:40] [MTL] MTL initialized with 6 unique vehicles
+[2026-03-25 00:02:40] [MTL] Added dummy vehicle: MTL1002 (Sedan) @ $85.0
+[2026-03-25 00:02:40] [MTL] Added dummy vehicle: MTL1003 (Sedan) @ $90.0
+[2026-03-25 00:02:40] [MTL] Added dummy vehicle: MTL2002 (SUV) @ $130.0
+[2026-03-25 00:02:40] [MTL] Dummy database initialization complete. Total vehicles: 6
+[2026-03-25 00:02:40] [MTL] Added dummy vehicle: MTL1001 (Sedan) @ $80.0
+[2026-03-25 00:02:40] [MTL] Added dummy vehicle: MTL1002 (Sedan) @ $85.0
+[2026-03-25 00:02:40] [MTL] Added dummy vehicle: MTL3001 (Truck) @ $150.0
+[2026-03-25 00:02:40] [MTL] Added dummy vehicle: MTL2001 (SUV) @ $120.0
+[2026-03-25 00:02:40] [MTL] MTL initialized with 6 unique vehicles
+[2026-03-25 00:02:40] [MTL] Added dummy vehicle: MTL2002 (SUV) @ $130.0
+[2026-03-25 00:02:40] [MTL] Added dummy vehicle: MTL1003 (Sedan) @ $90.0
+[2026-03-25 00:02:40] [MTL] Dummy database initialization complete. Total vehicles: 6
+[2026-03-25 00:02:40] [MTL] Added dummy vehicle: MTL2001 (SUV) @ $120.0
+[2026-03-25 00:02:40] [MTL] Added dummy vehicle: MTL3001 (Truck) @ $150.0
+[2026-03-25 00:02:40] [MTL] Added dummy vehicle: MTL2002 (SUV) @ $130.0
+[2026-03-25 00:02:40] [MTL] Server started. UDP Port: 5001
+[2026-03-25 00:02:40] [MTL] MTL initialized with 6 unique vehicles
+[2026-03-25 00:02:40] [MTL] Dummy database initialization complete. Total vehicles: 6
+[2026-03-25 00:02:40] [MTL] Server started. UDP Port: 5021
+[2026-03-25 00:02:40] [MTL] Server started. UDP Port: 5011
+[2026-03-25 00:02:40] [MTL] Added dummy vehicle: MTL3001 (Truck) @ $150.0
+[2026-03-25 00:02:40] [MTL] MTL initialized with 6 unique vehicles
+[2026-03-25 00:02:40] [MTL] Dummy database initialization complete. Total vehicles: 6
+[2026-03-25 00:02:40] [MTL] Server started. UDP Port: 5031
+[2026-03-25 00:02:41] [MTL] Initializing dummy database for MTL server...
+[2026-03-25 00:02:41] [MTL] Added dummy vehicle: MTL1001 (Sedan) @ $80.0
+[2026-03-25 00:02:41] [MTL] Added dummy vehicle: MTL1002 (Sedan) @ $85.0
+[2026-03-25 00:02:41] [MTL] Added dummy vehicle: MTL1003 (Sedan) @ $90.0
+[2026-03-25 00:02:41] [MTL] Added dummy vehicle: MTL2001 (SUV) @ $120.0
+[2026-03-25 00:02:41] [MTL] Added dummy vehicle: MTL2002 (SUV) @ $130.0
+[2026-03-25 00:02:41] [MTL] Initializing dummy database for MTL server...
+[2026-03-25 00:02:41] [MTL] Added dummy vehicle: MTL3001 (Truck) @ $150.0
+[2026-03-25 00:02:41] [MTL] MTL initialized with 6 unique vehicles
+[2026-03-25 00:02:41] [MTL] Dummy database initialization complete. Total vehicles: 6
+[2026-03-25 00:02:41] [MTL] Added dummy vehicle: MTL1001 (Sedan) @ $80.0
+[2026-03-25 00:02:41] [MTL] Added dummy vehicle: MTL1002 (Sedan) @ $85.0
+[2026-03-25 00:02:41] [MTL] Server started. UDP Port: 5021
+[2026-03-25 00:02:41] [MTL] Added dummy vehicle: MTL1003 (Sedan) @ $90.0
+[2026-03-25 00:02:41] [MTL] Added dummy vehicle: MTL2001 (SUV) @ $120.0
+[2026-03-25 00:02:41] [MTL] Added dummy vehicle: MTL2002 (SUV) @ $130.0
+[2026-03-25 00:02:41] [MTL] Added dummy vehicle: MTL3001 (Truck) @ $150.0
+[2026-03-25 00:02:41] [MTL] MTL initialized with 6 unique vehicles
+[2026-03-25 00:02:41] [MTL] Dummy database initialization complete. Total vehicles: 6
+[2026-03-25 00:02:41] [MTL] Server started. UDP Port: 5011
+[2026-03-25 00:02:41] [MTL] Initializing dummy database for MTL server...
+[2026-03-25 00:02:41] [MTL] Initializing dummy database for MTL server...
+[2026-03-25 00:02:41] [MTL] Added dummy vehicle: MTL1001 (Sedan) @ $80.0
+[2026-03-25 00:02:41] [MTL] Added dummy vehicle: MTL1002 (Sedan) @ $85.0
+[2026-03-25 00:02:41] [MTL] Added dummy vehicle: MTL1001 (Sedan) @ $80.0
+[2026-03-25 00:02:41] [MTL] Added dummy vehicle: MTL1003 (Sedan) @ $90.0
+[2026-03-25 00:02:41] [MTL] Added dummy vehicle: MTL1002 (Sedan) @ $85.0
+[2026-03-25 00:02:41] [MTL] Added dummy vehicle: MTL2001 (SUV) @ $120.0
+[2026-03-25 00:02:41] [MTL] Added dummy vehicle: MTL1003 (Sedan) @ $90.0
+[2026-03-25 00:02:41] [MTL] Added dummy vehicle: MTL2002 (SUV) @ $130.0
+[2026-03-25 00:02:41] [MTL] Added dummy vehicle: MTL2001 (SUV) @ $120.0
+[2026-03-25 00:02:41] [MTL] Added dummy vehicle: MTL3001 (Truck) @ $150.0
+[2026-03-25 00:02:41] [MTL] Added dummy vehicle: MTL2002 (SUV) @ $130.0
+[2026-03-25 00:02:41] [MTL] MTL initialized with 6 unique vehicles
+[2026-03-25 00:02:41] [MTL] Added dummy vehicle: MTL3001 (Truck) @ $150.0
+[2026-03-25 00:02:41] [MTL] Dummy database initialization complete. Total vehicles: 6
+[2026-03-25 00:02:41] [MTL] MTL initialized with 6 unique vehicles
+[2026-03-25 00:02:41] [MTL] Dummy database initialization complete. Total vehicles: 6
+[2026-03-25 00:02:41] [MTL] Server started. UDP Port: 5031
+[2026-03-25 00:02:41] [MTL] Server started. UDP Port: 5001

@@ -273,34 +273,49 @@ private void updateSlowTime(RequestContext ctx) {
 Phase 1 stub has no vote tallying. Add a vote collection window:
 
 ```java
-// Add fields to ReplicaManager:
+// Add field to ReplicaManager:
 private final ConcurrentHashMap<String, ConcurrentHashMap<String, String>> voteCollector =
     new ConcurrentHashMap<>(); // voteKey → (rmId → vote)
-private static final int VOTE_TIMEOUT_MS = 5000;
 
 private void handleVote(UDPMessage msg, DatagramSocket socket) {
-    // VOTE_BYZANTINE:faultyReplicaID or VOTE_CRASH:suspectedID:verdict
+    // VOTE_BYZANTINE:<targetId>:<voterId>
+    // VOTE_CRASH:<targetId>:<decision>:<voterId>
     String voteType = msg.getType().name();
     String targetId = msg.getField(0);
     String voteKey = voteType + ":" + targetId;
-    String voterDecision = msg.fieldCount() > 1 ? msg.getField(1) : "AGREE";
 
-    // Record this vote
+    String voterDecision;
+    String voterId;
+    if (msg.getType() == UDPMessage.Type.VOTE_CRASH) {
+        voterDecision = msg.getField(1);  // ALIVE or CRASH_CONFIRMED
+        voterId = msg.getField(2);         // sender RM id
+    } else {
+        voterDecision = "AGREE";           // Byzantine votes are implicit agree
+        voterId = msg.getField(1);         // sender RM id
+    }
+
+    // Record this vote keyed by the sender's RM identity
     voteCollector.computeIfAbsent(voteKey, k -> new ConcurrentHashMap<>())
-        .put("RM" + replicaId, voterDecision);
+        .put("RM" + voterId, voterDecision);
 
     // Check majority — require minimum votes before deciding (§3.2)
     ConcurrentHashMap<String, String> votes = voteCollector.get(voteKey);
     if (votes != null) {
         int totalVotes = votes.size();
-        // Need at least 2 votes (minimum for 3 reachable RMs: 2/3 majority)
-        if (totalVotes < 2) return;
+        int minVotes = PortConfig.ALL_RMS.length / 2 + 1; // 3 for 4 RMs
+        if (totalVotes < minVotes) return;
 
         long agreeCount = votes.values().stream()
             .filter(v -> v.equals("AGREE") || v.equals("CRASH_CONFIRMED")).count();
         // Strict majority of reachable RMs: 3/4 or 2/3 if one RM is down
         if (agreeCount > totalVotes / 2) {
-            replaceReplica();
+            // Only the RM responsible for the targetId should perform replacement
+            if (targetId.equals(String.valueOf(replicaId))) {
+                replaceReplica();
+            }
+            voteCollector.remove(voteKey);
+        } else if (totalVotes >= PortConfig.ALL_RMS.length) {
+            // All RMs voted but no majority — clean up to prevent leak
             voteCollector.remove(voteKey);
         }
     }
@@ -312,15 +327,18 @@ private void handleVote(UDPMessage msg, DatagramSocket socket) {
 ```java
 private void handleCrashSuspect(UDPMessage msg, DatagramSocket socket) {
     String suspectedId = msg.getField(2); // CRASH_SUSPECT:reqID:seqNum:suspectedID (§4.4)
-    // Verify by sending own heartbeat to the suspected replica
-    boolean alive = sendHeartbeat();
-    // Broadcast vote to all RMs
+    // Heartbeat the suspected replica's port, not our own
+    int suspectedPort = PortConfig.ALL_REPLICAS[Integer.parseInt(suspectedId) - 1];
+    boolean alive = sendHeartbeatTo(suspectedPort);
+    // Broadcast vote to all RMs (includes voter ID for correct tallying)
     String vote = alive
-        ? "VOTE_CRASH:" + suspectedId + ":ALIVE"
-        : "VOTE_CRASH:" + suspectedId + ":CRASH_CONFIRMED";
+        ? "VOTE_CRASH:" + suspectedId + ":ALIVE:" + replicaId
+        : "VOTE_CRASH:" + suspectedId + ":CRASH_CONFIRMED:" + replicaId;
+    byte[] voteData = vote.getBytes(StandardCharsets.UTF_8);
     for (int rmPort : PortConfig.ALL_RMS) {
         try {
-            sender.send(vote, InetAddress.getByName("localhost"), rmPort, socket);
+            socket.send(new DatagramPacket(voteData, voteData.length,
+                InetAddress.getByName("localhost"), rmPort));
         } catch (Exception e) {
             System.err.println("RM" + replicaId + ": vote send error: " + e.getMessage());
         }
@@ -374,18 +392,19 @@ private void replaceReplica() {
 
     // Step 5: Notify Sequencer + FE that replica is ready
     // Include lastSeqNum so Sequencer can replay from lastSeqNum+1 (§3.2)
+    // Use plain UDP — Sequencer/FE/RMs do not send ACK for REPLICA_READY
     try (DatagramSocket socket = new DatagramSocket()) {
         String readyMsg = "REPLICA_READY:" + replicaId + ":localhost:" + replicaPort
             + ":" + lastSeqNum;
-        // Send to Sequencer
-        sender.send(readyMsg, InetAddress.getByName("localhost"),
-            PortConfig.SEQUENCER, socket);
-        // Send to FE
-        sender.send(readyMsg, InetAddress.getByName("localhost"),
-            PortConfig.FE_UDP, socket);
-        // Send to all RMs
+        byte[] readyData = readyMsg.getBytes(StandardCharsets.UTF_8);
+        InetAddress localhost = InetAddress.getByName("localhost");
+        socket.send(new DatagramPacket(readyData, readyData.length,
+            localhost, PortConfig.SEQUENCER));
+        socket.send(new DatagramPacket(readyData, readyData.length,
+            localhost, PortConfig.FE_UDP));
         for (int rmPort : PortConfig.ALL_RMS) {
-            sender.send(readyMsg, InetAddress.getByName("localhost"), rmPort, socket);
+            socket.send(new DatagramPacket(readyData, readyData.length,
+                localhost, rmPort));
         }
     } catch (Exception e) {
         System.err.println("RM" + replicaId + ": REPLICA_READY send failed: " + e.getMessage());
@@ -423,13 +442,16 @@ private void handleStateRequest(UDPMessage msg, DatagramSocket socket, DatagramP
 
 private String requestStateFromHealthyReplica() {
     // Request state from lowest-ID healthy RM (skip self)
+    // Uses plain UDP — the try-each-RM loop is the retry mechanism
     for (int i = 0; i < PortConfig.ALL_RMS.length; i++) {
         int targetRmPort = PortConfig.ALL_RMS[i];
         if (targetRmPort == rmPort) continue; // skip self
 
         try (DatagramSocket socket = new DatagramSocket()) {
             String req = "STATE_REQUEST:" + replicaId;
-            sender.send(req, InetAddress.getByName("localhost"), targetRmPort, socket);
+            byte[] reqData = req.getBytes(StandardCharsets.UTF_8);
+            socket.send(new DatagramPacket(reqData, reqData.length,
+                InetAddress.getByName("localhost"), targetRmPort));
 
             socket.setSoTimeout(10000);
             byte[] buf = new byte[65535];
@@ -456,7 +478,7 @@ private String requestStateFromHealthyReplica() {
 - [ ] Steps summary:
   1. Monitor co-located replica health via `heartbeatLoop()` (3s interval, 2s timeout).
   2. Listen on RM port (7001–7004) for FE notifications and RM votes.
-  3. On `CRASH_SUSPECT`: verify by own heartbeat, broadcast `VOTE_CRASH` to all RMs.
+  3. On `CRASH_SUSPECT`: verify by heartbeating the suspected replica, broadcast `VOTE_CRASH` to all RMs.
   4. On `REPLACE_REQUEST`: broadcast `VOTE_BYZANTINE` to all RMs.
   5. `handleVote()`: collect votes, require strict majority of reachable RMs.
   6. On approved replacement: `killReplica()` (Byzantine) or skip (crash), then `launchReplica()`.
@@ -732,9 +754,10 @@ private void enableByzantine(int replicaId, boolean enable) {
 
 ## Public APIs, Interfaces, and Types (Phase 2 Changes)
 - `REPLICA_READY` message format: `REPLICA_READY:replicaID:host:port:lastSeqNum` — includes lastSeqNum so Sequencer can replay from the correct point.
-- `VOTE_CRASH` message format: `VOTE_CRASH:suspectedId:verdict` — suspectedId first, then verdict (ALIVE or CRASH_CONFIRMED).
+- `VOTE_BYZANTINE` message format: `VOTE_BYZANTINE:targetId:voterId` — targetId is the faulty replica, voterId is the sending RM.
+- `VOTE_CRASH` message format: `VOTE_CRASH:suspectedId:verdict:voterId` — suspectedId first, then verdict (ALIVE or CRASH_CONFIRMED), then voter RM id.
 - `INIT_STATE` ACK format: `ACK:INIT_STATE:replicaId:lastSeqNum` — includes lastSeqNum for RM to pass to Sequencer.
-- `handleVote()` requires minimum 2 votes before deciding (prevents single-RM unilateral replacement).
+- `handleVote()` requires minimum `ALL_RMS.length / 2 + 1` votes (= 3 for 4 RMs) before deciding (prevents premature triggers with only 2 votes).
 - Phase 1 already provides: RESULT with reqID, CompletableFuture voting, sendResultToFE(), targeted NACK replay, per-thread sockets. Verify these are present before extending.
 
 ## Guide Self-Check

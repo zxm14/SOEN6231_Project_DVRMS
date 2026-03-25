@@ -702,3 +702,267 @@
 [2026-03-24 20:56:54] [WPG] WPG initialized with 7 unique vehicles
 [2026-03-24 20:56:54] [WPG] Dummy database initialization complete. Total vehicles: 7
 [2026-03-24 20:56:54] [WPG] Server started. UDP Port: 5002
+[2026-03-24 23:59:13] [WPG] Initializing dummy database for WPG server...
+[2026-03-24 23:59:13] [WPG] Initializing dummy database for WPG server...
+[2026-03-24 23:59:13] [WPG] Added dummy vehicle: WPG1001 (Sedan) @ $75.0
+[2026-03-24 23:59:13] [WPG] Added dummy vehicle: WPG1002 (Sedan) @ $80.0
+[2026-03-24 23:59:13] [WPG] Added dummy vehicle: WPG2001 (SUV) @ $110.0
+[2026-03-24 23:59:13] [WPG] Added dummy vehicle: WPG2002 (SUV) @ $115.0
+[2026-03-24 23:59:13] [WPG] Added dummy vehicle: WPG2003 (SUV) @ $125.0
+[2026-03-24 23:59:13] [WPG] Added dummy vehicle: WPG3001 (Truck) @ $140.0
+[2026-03-24 23:59:13] [WPG] Added dummy vehicle: WPG3002 (Truck) @ $145.0
+[2026-03-24 23:59:13] [WPG] WPG initialized with 7 unique vehicles
+[2026-03-24 23:59:13] [WPG] Dummy database initialization complete. Total vehicles: 7
+[2026-03-24 23:59:13] [WPG] Added dummy vehicle: WPG1001 (Sedan) @ $75.0
+[2026-03-24 23:59:13] [WPG] Added dummy vehicle: WPG1002 (Sedan) @ $80.0
+[2026-03-24 23:59:13] [WPG] Added dummy vehicle: WPG2001 (SUV) @ $110.0
+[2026-03-24 23:59:13] [WPG] Added dummy vehicle: WPG2002 (SUV) @ $115.0
+[2026-03-24 23:59:13] [WPG] Server started. UDP Port: 5022
+[2026-03-24 23:59:13] [WPG] Added dummy vehicle: WPG2003 (SUV) @ $125.0
+[2026-03-24 23:59:13] [WPG] Added dummy vehicle: WPG3001 (Truck) @ $140.0
+[2026-03-24 23:59:13] [WPG] Initializing dummy database for WPG server...
+[2026-03-24 23:59:13] [WPG] Added dummy vehicle: WPG3002 (Truck) @ $145.0
+[2026-03-24 23:59:13] [WPG] Added dummy vehicle: WPG1001 (Sedan) @ $75.0
+[2026-03-24 23:59:13] [WPG] WPG initialized with 7 unique vehicles
+[2026-03-24 23:59:13] [WPG] Added dummy vehicle: WPG1002 (Sedan) @ $80.0
+[2026-03-24 23:59:13] [WPG] Dummy database initialization complete. Total vehicles: 7
+[2026-03-24 23:59:13] [WPG] Added dummy vehicle: WPG2001 (SUV) @ $110.0
+[2026-03-24 23:59:13] [WPG] Added dummy vehicle: WPG2002 (SUV) @ $115.0
+[2026-03-24 23:59:13] [WPG] Added dummy vehicle: WPG2003 (SUV) @ $125.0
+[2026-03-24 23:59:13] [WPG] Added dummy vehicle: WPG3001 (Truck) @ $140.0
+[2026-03-24 23:59:13] [WPG] Added dummy vehicle: WPG3002 (Truck) @ $145.0
+[2026-03-24 23:59:13] [WPG] WPG initialized with 7 unique vehicles
+[2026-03-24 23:59:13] [WPG] Dummy database initialization complete. Total vehicles: 7
+[2026-03-24 23:59:13] [WPG] Initializing dummy database for WPG server...
+[2026-03-24 23:59:13] [WPG] Added dummy vehicle: WPG1001 (Sedan) @ $75.0
+[2026-03-24 23:59:13] [WPG] Added dummy vehicle: WPG1002 (Sedan) @ $80.0
+[2026-03-24 23:59:13] [WPG] Server started. UDP Port: 5032
+[2026-03-24 23:59:13] [WPG] Server started. UDP Port: 5012
+[2026-03-24 23:59:13] [WPG] Added dummy vehicle: WPG2001 (SUV) @ $110.0
+[2026-03-24 23:59:13] [WPG] Added dummy vehicle: WPG2002 (SUV) @ $115.0
+[2026-03-24 23:59:13] [WPG] Added dummy vehicle: WPG2003 (SUV) @ $125.0
+[2026-03-24 23:59:13] [WPG] Added dummy vehicle: WPG3001 (Truck) @ $140.0
+[2026-03-24 23:59:13] [WPG] Added dummy vehicle: WPG3002 (Truck) @ $145.0
+[2026-03-24 23:59:13] [WPG] WPG initialized with 7 unique vehicles
+[2026-03-24 23:59:13] [WPG] Dummy database initialization complete. Total vehicles: 7
+[2026-03-24 23:59:13] [WPG] Server started. UDP Port: 5002
+[2026-03-24 23:59:14] [WPG] Initializing dummy database for WPG server...
+[2026-03-24 23:59:14] [WPG] Added dummy vehicle: WPG1001 (Sedan) @ $75.0
+[2026-03-24 23:59:14] [WPG] Added dummy vehicle: WPG1002 (Sedan) @ $80.0
+[2026-03-24 23:59:14] [WPG] Added dummy vehicle: WPG2001 (SUV) @ $110.0
+[2026-03-24 23:59:14] [WPG] Added dummy vehicle: WPG2002 (SUV) @ $115.0
+[2026-03-24 23:59:14] [WPG] Added dummy vehicle: WPG2003 (SUV) @ $125.0
+[2026-03-24 23:59:14] [WPG] Added dummy vehicle: WPG3001 (Truck) @ $140.0
+[2026-03-24 23:59:14] [WPG] Added dummy vehicle: WPG3002 (Truck) @ $145.0
+[2026-03-24 23:59:14] [WPG] WPG initialized with 7 unique vehicles
+[2026-03-24 23:59:14] [WPG] Dummy database initialization complete. Total vehicles: 7
+[2026-03-24 23:59:14] [WPG] Server started. UDP Port: 5022
+[2026-03-24 23:59:14] [WPG] Initializing dummy database for WPG server...
+[2026-03-24 23:59:14] [WPG] Initializing dummy database for WPG server...
+[2026-03-24 23:59:14] [WPG] Added dummy vehicle: WPG1001 (Sedan) @ $75.0
+[2026-03-24 23:59:14] [WPG] Added dummy vehicle: WPG1001 (Sedan) @ $75.0
+[2026-03-24 23:59:14] [WPG] Added dummy vehicle: WPG1002 (Sedan) @ $80.0
+[2026-03-24 23:59:14] [WPG] Added dummy vehicle: WPG1002 (Sedan) @ $80.0
+[2026-03-24 23:59:14] [WPG] Added dummy vehicle: WPG2001 (SUV) @ $110.0
+[2026-03-24 23:59:14] [WPG] Added dummy vehicle: WPG2001 (SUV) @ $110.0
+[2026-03-24 23:59:14] [WPG] Added dummy vehicle: WPG2002 (SUV) @ $115.0
+[2026-03-24 23:59:14] [WPG] Added dummy vehicle: WPG2003 (SUV) @ $125.0
+[2026-03-24 23:59:14] [WPG] Added dummy vehicle: WPG3001 (Truck) @ $140.0
+[2026-03-24 23:59:14] [WPG] Added dummy vehicle: WPG3002 (Truck) @ $145.0
+[2026-03-24 23:59:14] [WPG] WPG initialized with 7 unique vehicles
+[2026-03-24 23:59:14] [WPG] Dummy database initialization complete. Total vehicles: 7
+[2026-03-24 23:59:14] [WPG] Added dummy vehicle: WPG2002 (SUV) @ $115.0
+[2026-03-24 23:59:14] [WPG] Added dummy vehicle: WPG2003 (SUV) @ $125.0
+[2026-03-24 23:59:14] [WPG] Added dummy vehicle: WPG3001 (Truck) @ $140.0
+[2026-03-24 23:59:14] [WPG] Added dummy vehicle: WPG3002 (Truck) @ $145.0
+[2026-03-24 23:59:14] [WPG] WPG initialized with 7 unique vehicles
+[2026-03-24 23:59:14] [WPG] Dummy database initialization complete. Total vehicles: 7
+[2026-03-24 23:59:14] [WPG] Server started. UDP Port: 5032
+[2026-03-24 23:59:14] [WPG] Server started. UDP Port: 5012
+[2026-03-24 23:59:14] [WPG] Initializing dummy database for WPG server...
+[2026-03-24 23:59:14] [WPG] Added dummy vehicle: WPG1001 (Sedan) @ $75.0
+[2026-03-24 23:59:14] [WPG] Added dummy vehicle: WPG1002 (Sedan) @ $80.0
+[2026-03-24 23:59:14] [WPG] Added dummy vehicle: WPG2001 (SUV) @ $110.0
+[2026-03-24 23:59:14] [WPG] Added dummy vehicle: WPG2002 (SUV) @ $115.0
+[2026-03-24 23:59:14] [WPG] Added dummy vehicle: WPG2003 (SUV) @ $125.0
+[2026-03-24 23:59:14] [WPG] Added dummy vehicle: WPG3001 (Truck) @ $140.0
+[2026-03-24 23:59:14] [WPG] Added dummy vehicle: WPG3002 (Truck) @ $145.0
+[2026-03-24 23:59:14] [WPG] WPG initialized with 7 unique vehicles
+[2026-03-24 23:59:14] [WPG] Dummy database initialization complete. Total vehicles: 7
+[2026-03-24 23:59:14] [WPG] Server started. UDP Port: 5002
+[2026-03-25 00:02:28] [WPG] Initializing dummy database for WPG server...
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG1001 (Sedan) @ $75.0
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG1002 (Sedan) @ $80.0
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG2001 (SUV) @ $110.0
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG2002 (SUV) @ $115.0
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG2003 (SUV) @ $125.0
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG3001 (Truck) @ $140.0
+[2026-03-25 00:02:28] [WPG] Initializing dummy database for WPG server...
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG3002 (Truck) @ $145.0
+[2026-03-25 00:02:28] [WPG] WPG initialized with 7 unique vehicles
+[2026-03-25 00:02:28] [WPG] Dummy database initialization complete. Total vehicles: 7
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG1001 (Sedan) @ $75.0
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG1002 (Sedan) @ $80.0
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG2001 (SUV) @ $110.0
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG2002 (SUV) @ $115.0
+[2026-03-25 00:02:28] [WPG] Initializing dummy database for WPG server...
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG2003 (SUV) @ $125.0
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG1001 (Sedan) @ $75.0
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG1002 (Sedan) @ $80.0
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG3001 (Truck) @ $140.0
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG2001 (SUV) @ $110.0
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG2002 (SUV) @ $115.0
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG2003 (SUV) @ $125.0
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG3001 (Truck) @ $140.0
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG3002 (Truck) @ $145.0
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG3002 (Truck) @ $145.0
+[2026-03-25 00:02:28] [WPG] WPG initialized with 7 unique vehicles
+[2026-03-25 00:02:28] [WPG] Dummy database initialization complete. Total vehicles: 7
+[2026-03-25 00:02:28] [WPG] WPG initialized with 7 unique vehicles
+[2026-03-25 00:02:28] [WPG] Dummy database initialization complete. Total vehicles: 7
+[2026-03-25 00:02:28] [WPG] Server started. UDP Port: 5032
+[2026-03-25 00:02:28] [WPG] Initializing dummy database for WPG server...
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG1001 (Sedan) @ $75.0
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG1002 (Sedan) @ $80.0
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG2001 (SUV) @ $110.0
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG2002 (SUV) @ $115.0
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG2003 (SUV) @ $125.0
+[2026-03-25 00:02:28] [WPG] Server started. UDP Port: 5012
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG3001 (Truck) @ $140.0
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG3002 (Truck) @ $145.0
+[2026-03-25 00:02:28] [WPG] WPG initialized with 7 unique vehicles
+[2026-03-25 00:02:28] [WPG] Dummy database initialization complete. Total vehicles: 7
+[2026-03-25 00:02:28] [WPG] Server started. UDP Port: 5022
+[2026-03-25 00:02:28] [WPG] Server started. UDP Port: 5002
+[2026-03-25 00:02:28] [WPG] Initializing dummy database for WPG server...
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG1001 (Sedan) @ $75.0
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG1002 (Sedan) @ $80.0
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG2001 (SUV) @ $110.0
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG2002 (SUV) @ $115.0
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG2003 (SUV) @ $125.0
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG3001 (Truck) @ $140.0
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG3002 (Truck) @ $145.0
+[2026-03-25 00:02:28] [WPG] WPG initialized with 7 unique vehicles
+[2026-03-25 00:02:28] [WPG] Dummy database initialization complete. Total vehicles: 7
+[2026-03-25 00:02:28] [WPG] Server started. UDP Port: 5002
+[2026-03-25 00:02:28] [WPG] Initializing dummy database for WPG server...
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG1001 (Sedan) @ $75.0
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG1002 (Sedan) @ $80.0
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG2001 (SUV) @ $110.0
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG2002 (SUV) @ $115.0
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG2003 (SUV) @ $125.0
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG3001 (Truck) @ $140.0
+[2026-03-25 00:02:28] [WPG] Added dummy vehicle: WPG3002 (Truck) @ $145.0
+[2026-03-25 00:02:28] [WPG] WPG initialized with 7 unique vehicles
+[2026-03-25 00:02:28] [WPG] Dummy database initialization complete. Total vehicles: 7
+[2026-03-25 00:02:28] [WPG] Server started. UDP Port: 5022
+[2026-03-25 00:02:29] [WPG] Initializing dummy database for WPG server...
+[2026-03-25 00:02:29] [WPG] Added dummy vehicle: WPG1001 (Sedan) @ $75.0
+[2026-03-25 00:02:29] [WPG] Added dummy vehicle: WPG1002 (Sedan) @ $80.0
+[2026-03-25 00:02:29] [WPG] Added dummy vehicle: WPG2001 (SUV) @ $110.0
+[2026-03-25 00:02:29] [WPG] Added dummy vehicle: WPG2002 (SUV) @ $115.0
+[2026-03-25 00:02:29] [WPG] Added dummy vehicle: WPG2003 (SUV) @ $125.0
+[2026-03-25 00:02:29] [WPG] Added dummy vehicle: WPG3001 (Truck) @ $140.0
+[2026-03-25 00:02:29] [WPG] Added dummy vehicle: WPG3002 (Truck) @ $145.0
+[2026-03-25 00:02:29] [WPG] WPG initialized with 7 unique vehicles
+[2026-03-25 00:02:29] [WPG] Dummy database initialization complete. Total vehicles: 7
+[2026-03-25 00:02:29] [WPG] Server started. UDP Port: 5012
+[2026-03-25 00:02:29] [WPG] Initializing dummy database for WPG server...
+[2026-03-25 00:02:29] [WPG] Added dummy vehicle: WPG1001 (Sedan) @ $75.0
+[2026-03-25 00:02:29] [WPG] Added dummy vehicle: WPG1002 (Sedan) @ $80.0
+[2026-03-25 00:02:29] [WPG] Added dummy vehicle: WPG2001 (SUV) @ $110.0
+[2026-03-25 00:02:29] [WPG] Added dummy vehicle: WPG2002 (SUV) @ $115.0
+[2026-03-25 00:02:29] [WPG] Added dummy vehicle: WPG2003 (SUV) @ $125.0
+[2026-03-25 00:02:29] [WPG] Added dummy vehicle: WPG3001 (Truck) @ $140.0
+[2026-03-25 00:02:29] [WPG] Added dummy vehicle: WPG3002 (Truck) @ $145.0
+[2026-03-25 00:02:29] [WPG] WPG initialized with 7 unique vehicles
+[2026-03-25 00:02:29] [WPG] Dummy database initialization complete. Total vehicles: 7
+[2026-03-25 00:02:29] [WPG] Server started. UDP Port: 5032
+[2026-03-25 00:02:40] [WPG] Initializing dummy database for WPG server...
+[2026-03-25 00:02:40] [WPG] Added dummy vehicle: WPG1001 (Sedan) @ $75.0
+[2026-03-25 00:02:40] [WPG] Added dummy vehicle: WPG1002 (Sedan) @ $80.0
+[2026-03-25 00:02:40] [WPG] Initializing dummy database for WPG server...
+[2026-03-25 00:02:40] [WPG] Added dummy vehicle: WPG1001 (Sedan) @ $75.0
+[2026-03-25 00:02:40] [WPG] Added dummy vehicle: WPG2001 (SUV) @ $110.0
+[2026-03-25 00:02:40] [WPG] Added dummy vehicle: WPG1002 (Sedan) @ $80.0
+[2026-03-25 00:02:40] [WPG] Added dummy vehicle: WPG2002 (SUV) @ $115.0
+[2026-03-25 00:02:40] [WPG] Added dummy vehicle: WPG2001 (SUV) @ $110.0
+[2026-03-25 00:02:40] [WPG] Added dummy vehicle: WPG2003 (SUV) @ $125.0
+[2026-03-25 00:02:40] [WPG] Added dummy vehicle: WPG2002 (SUV) @ $115.0
+[2026-03-25 00:02:40] [WPG] Added dummy vehicle: WPG3001 (Truck) @ $140.0
+[2026-03-25 00:02:40] [WPG] Added dummy vehicle: WPG3002 (Truck) @ $145.0
+[2026-03-25 00:02:40] [WPG] Added dummy vehicle: WPG2003 (SUV) @ $125.0
+[2026-03-25 00:02:40] [WPG] Added dummy vehicle: WPG3001 (Truck) @ $140.0
+[2026-03-25 00:02:40] [WPG] Initializing dummy database for WPG server...
+[2026-03-25 00:02:40] [WPG] Added dummy vehicle: WPG3002 (Truck) @ $145.0
+[2026-03-25 00:02:40] [WPG] WPG initialized with 7 unique vehicles
+[2026-03-25 00:02:40] [WPG] Added dummy vehicle: WPG1001 (Sedan) @ $75.0
+[2026-03-25 00:02:40] [WPG] Added dummy vehicle: WPG1002 (Sedan) @ $80.0
+[2026-03-25 00:02:40] [WPG] Dummy database initialization complete. Total vehicles: 7
+[2026-03-25 00:02:40] [WPG] WPG initialized with 7 unique vehicles
+[2026-03-25 00:02:40] [WPG] Added dummy vehicle: WPG2001 (SUV) @ $110.0
+[2026-03-25 00:02:40] [WPG] Dummy database initialization complete. Total vehicles: 7
+[2026-03-25 00:02:40] [WPG] Added dummy vehicle: WPG2002 (SUV) @ $115.0
+[2026-03-25 00:02:40] [WPG] Server started. UDP Port: 5022
+[2026-03-25 00:02:40] [WPG] Server started. UDP Port: 5002
+[2026-03-25 00:02:40] [WPG] Added dummy vehicle: WPG2003 (SUV) @ $125.0
+[2026-03-25 00:02:40] [WPG] Added dummy vehicle: WPG3001 (Truck) @ $140.0
+[2026-03-25 00:02:40] [WPG] Added dummy vehicle: WPG3002 (Truck) @ $145.0
+[2026-03-25 00:02:40] [WPG] WPG initialized with 7 unique vehicles
+[2026-03-25 00:02:40] [WPG] Initializing dummy database for WPG server...
+[2026-03-25 00:02:40] [WPG] Dummy database initialization complete. Total vehicles: 7
+[2026-03-25 00:02:40] [WPG] Added dummy vehicle: WPG1001 (Sedan) @ $75.0
+[2026-03-25 00:02:40] [WPG] Added dummy vehicle: WPG1002 (Sedan) @ $80.0
+[2026-03-25 00:02:40] [WPG] Added dummy vehicle: WPG2001 (SUV) @ $110.0
+[2026-03-25 00:02:40] [WPG] Added dummy vehicle: WPG2002 (SUV) @ $115.0
+[2026-03-25 00:02:40] [WPG] Added dummy vehicle: WPG2003 (SUV) @ $125.0
+[2026-03-25 00:02:40] [WPG] Added dummy vehicle: WPG3001 (Truck) @ $140.0
+[2026-03-25 00:02:40] [WPG] Added dummy vehicle: WPG3002 (Truck) @ $145.0
+[2026-03-25 00:02:40] [WPG] WPG initialized with 7 unique vehicles
+[2026-03-25 00:02:40] [WPG] Server started. UDP Port: 5012
+[2026-03-25 00:02:40] [WPG] Dummy database initialization complete. Total vehicles: 7
+[2026-03-25 00:02:40] [WPG] Server started. UDP Port: 5032
+[2026-03-25 00:02:41] [WPG] Initializing dummy database for WPG server...
+[2026-03-25 00:02:41] [WPG] Added dummy vehicle: WPG1001 (Sedan) @ $75.0
+[2026-03-25 00:02:41] [WPG] Added dummy vehicle: WPG1002 (Sedan) @ $80.0
+[2026-03-25 00:02:41] [WPG] Added dummy vehicle: WPG2001 (SUV) @ $110.0
+[2026-03-25 00:02:41] [WPG] Added dummy vehicle: WPG2002 (SUV) @ $115.0
+[2026-03-25 00:02:41] [WPG] Added dummy vehicle: WPG2003 (SUV) @ $125.0
+[2026-03-25 00:02:41] [WPG] Added dummy vehicle: WPG3001 (Truck) @ $140.0
+[2026-03-25 00:02:41] [WPG] Added dummy vehicle: WPG3002 (Truck) @ $145.0
+[2026-03-25 00:02:41] [WPG] Initializing dummy database for WPG server...
+[2026-03-25 00:02:41] [WPG] WPG initialized with 7 unique vehicles
+[2026-03-25 00:02:41] [WPG] Added dummy vehicle: WPG1001 (Sedan) @ $75.0
+[2026-03-25 00:02:41] [WPG] Dummy database initialization complete. Total vehicles: 7
+[2026-03-25 00:02:41] [WPG] Added dummy vehicle: WPG1002 (Sedan) @ $80.0
+[2026-03-25 00:02:41] [WPG] Server started. UDP Port: 5022
+[2026-03-25 00:02:41] [WPG] Added dummy vehicle: WPG2001 (SUV) @ $110.0
+[2026-03-25 00:02:41] [WPG] Added dummy vehicle: WPG2002 (SUV) @ $115.0
+[2026-03-25 00:02:41] [WPG] Added dummy vehicle: WPG2003 (SUV) @ $125.0
+[2026-03-25 00:02:41] [WPG] Added dummy vehicle: WPG3001 (Truck) @ $140.0
+[2026-03-25 00:02:41] [WPG] Added dummy vehicle: WPG3002 (Truck) @ $145.0
+[2026-03-25 00:02:41] [WPG] WPG initialized with 7 unique vehicles
+[2026-03-25 00:02:41] [WPG] Dummy database initialization complete. Total vehicles: 7
+[2026-03-25 00:02:41] [WPG] Server started. UDP Port: 5012
+[2026-03-25 00:02:41] [WPG] Initializing dummy database for WPG server...
+[2026-03-25 00:02:41] [WPG] Added dummy vehicle: WPG1001 (Sedan) @ $75.0
+[2026-03-25 00:02:41] [WPG] Added dummy vehicle: WPG1002 (Sedan) @ $80.0
+[2026-03-25 00:02:41] [WPG] Added dummy vehicle: WPG2001 (SUV) @ $110.0
+[2026-03-25 00:02:41] [WPG] Initializing dummy database for WPG server...
+[2026-03-25 00:02:41] [WPG] Added dummy vehicle: WPG2002 (SUV) @ $115.0
+[2026-03-25 00:02:41] [WPG] Added dummy vehicle: WPG1001 (Sedan) @ $75.0
+[2026-03-25 00:02:41] [WPG] Added dummy vehicle: WPG2003 (SUV) @ $125.0
+[2026-03-25 00:02:41] [WPG] Added dummy vehicle: WPG1002 (Sedan) @ $80.0
+[2026-03-25 00:02:41] [WPG] Added dummy vehicle: WPG2001 (SUV) @ $110.0
+[2026-03-25 00:02:41] [WPG] Added dummy vehicle: WPG3001 (Truck) @ $140.0
+[2026-03-25 00:02:41] [WPG] Added dummy vehicle: WPG2002 (SUV) @ $115.0
+[2026-03-25 00:02:41] [WPG] Added dummy vehicle: WPG3002 (Truck) @ $145.0
+[2026-03-25 00:02:41] [WPG] Added dummy vehicle: WPG2003 (SUV) @ $125.0
+[2026-03-25 00:02:41] [WPG] WPG initialized with 7 unique vehicles
+[2026-03-25 00:02:41] [WPG] Added dummy vehicle: WPG3001 (Truck) @ $140.0
+[2026-03-25 00:02:41] [WPG] Dummy database initialization complete. Total vehicles: 7
+[2026-03-25 00:02:41] [WPG] Added dummy vehicle: WPG3002 (Truck) @ $145.0
+[2026-03-25 00:02:41] [WPG] WPG initialized with 7 unique vehicles
+[2026-03-25 00:02:41] [WPG] Dummy database initialization complete. Total vehicles: 7
+[2026-03-25 00:02:41] [WPG] Server started. UDP Port: 5032
+[2026-03-25 00:02:41] [WPG] Server started. UDP Port: 5002
