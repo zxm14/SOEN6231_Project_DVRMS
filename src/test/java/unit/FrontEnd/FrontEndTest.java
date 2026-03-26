@@ -45,18 +45,7 @@ class FrontEndTest {
     @BeforeAll
     static void setup() throws Exception {
         System.setProperty("dvrms.disable.udp", "true");
-        fe = new FrontEnd();
-
-        // Replace the real sender with a capturing spy
-        Field senderField = FrontEnd.class.getDeclaredField("sender");
-        senderField.setAccessible(true);
-
-        // Remove final modifier
-        Field modifiersField = Field.class.getDeclaredField("modifiers");
-        modifiersField.setAccessible(true);
-        modifiersField.setInt(senderField, senderField.getModifiers() & ~Modifier.FINAL);
-
-        senderField.set(fe, new CapturingSender());
+        fe = new FrontEnd(new CapturingSender());
     }
 
     @BeforeEach

@@ -16,7 +16,7 @@ public class FrontEnd {
     private final ConcurrentHashMap<String, RequestContext> pendingRequests = new ConcurrentHashMap<>();
     private final ConcurrentHashMap<String, AtomicInteger> byzantineCount = new ConcurrentHashMap<>();
     private final AtomicLong slowestResponseTime = new AtomicLong(2000);
-    private final ReliableUDPSender sender = new ReliableUDPSender();
+    private final ReliableUDPSender sender;
     private final AtomicInteger requestCounter = new AtomicInteger(0);
 
     static class RequestContext {
@@ -48,6 +48,11 @@ public class FrontEnd {
     }
 
     public FrontEnd() {
+        this(new ReliableUDPSender());
+    }
+
+    public FrontEnd(ReliableUDPSender sender) {
+        this.sender = sender;
         if (!"true".equals(System.getProperty("dvrms.disable.udp"))) {
             new Thread(this::listenForResults, "FE-ResultListener").start();
         }
