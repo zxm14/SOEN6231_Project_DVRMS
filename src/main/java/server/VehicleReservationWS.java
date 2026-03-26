@@ -1004,7 +1004,7 @@ public class VehicleReservationWS {
         try {
           return addVehicle(parts[1], parts[2], parts[3], parts[4], Double.parseDouble(parts[5]));
         } catch (NumberFormatException e) {
-          return "FAIL: Invalid reservation price";
+          return "FAIL: Invalid vehicle price";
         }
       case "REMOVEVEHICLE":
         return (parts.length >= 3)
