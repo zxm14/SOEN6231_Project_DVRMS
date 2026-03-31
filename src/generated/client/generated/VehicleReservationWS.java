@@ -207,28 +207,4 @@ public interface VehicleReservationWS {
         @WebParam(name = "endDate", targetNamespace = "")
         String endDate);
 
-    /**
-     * 
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getStateSnapshot", targetNamespace = "http://server/", className = "client.generated.GetStateSnapshot")
-    @ResponseWrapper(localName = "getStateSnapshotResponse", targetNamespace = "http://server/", className = "client.generated.GetStateSnapshotResponse")
-    @Action(input = "http://server/VehicleReservationWS/getStateSnapshotRequest", output = "http://server/VehicleReservationWS/getStateSnapshotResponse")
-    public String getStateSnapshot();
-
-    /**
-     * 
-     * @param arg0
-     */
-    @WebMethod
-    @RequestWrapper(localName = "loadStateSnapshot", targetNamespace = "http://server/", className = "client.generated.LoadStateSnapshot")
-    @ResponseWrapper(localName = "loadStateSnapshotResponse", targetNamespace = "http://server/", className = "client.generated.LoadStateSnapshotResponse")
-    @Action(input = "http://server/VehicleReservationWS/loadStateSnapshotRequest", output = "http://server/VehicleReservationWS/loadStateSnapshotResponse")
-    public void loadStateSnapshot(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0);
-
 }

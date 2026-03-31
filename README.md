@@ -91,9 +91,9 @@ java -cp bin client.CustomerClient
 
 ## Team
 
-| Role | Owner |
-|---|---|
-| Front End (FE) | Student 1 |
-| Replica Manager (RM) | Student 2 |
-| Sequencer | Student 3 |
-| Test Cases & Client | Student 4 |
+| Role | Owner        |id |
+|---|--------------|-------|
+| Front End (FE) | Xueming Zhao |40347760
+| Replica Manager (RM) | Chen Qian    |27867808
+| Sequencer | Anusha Gairola |40347249
+| Test Cases & Client | Yichen Huang |40167688

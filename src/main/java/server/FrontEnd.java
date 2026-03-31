@@ -10,7 +10,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.*;
 
-@WebService(serviceName = "VehicleReservationService")
+@WebService(name = "VehicleReservationWS", serviceName = "VehicleReservationService")
 public class FrontEnd {
 
     private final ConcurrentHashMap<String, RequestContext> pendingRequests = new ConcurrentHashMap<>();
@@ -157,16 +157,22 @@ public class FrontEnd {
             pendingRequests.remove(reqID);
             return "FAIL: Could not reach Sequencer";
         }
+        System.out.println("FE: [" + reqID + "] forwarded");
 
         long timeout = 2 * slowestResponseTime.get();
         String majorityResult = ctx.awaitMajority(timeout);
 
         if (majorityResult != null) {
             processResults(ctx, majorityResult);
+            System.out.println("FE: [" + reqID + "] returning result");
             return majorityResult;
         }
 
-        return vote(ctx);
+        String result = vote(ctx);
+        if (!result.startsWith("FAIL")) {
+            System.out.println("FE: [" + reqID + "] returning result");
+        }
+        return result;
     }
 
     private String vote(RequestContext ctx) {
@@ -201,8 +207,11 @@ public class FrontEnd {
             } else {
                 int count = byzantineCount.computeIfAbsent(replicaID, k -> new AtomicInteger(0))
                     .incrementAndGet();
+                System.out.println("FE: [" + ctx.requestID + "] Byzantine mismatch from replica "
+                    + replicaID + " (strike " + count + "/3)");
                 sendToAllRMs("INCORRECT_RESULT:" + ctx.requestID + ":" + ctx.seqNum + ":" + replicaID);
                 if (count >= 3) {
+                    System.out.println("FE: [" + ctx.requestID + "] REPLACE_REQUEST sent for replica " + replicaID);
                     sendToAllRMs("REPLACE_REQUEST:" + replicaID + ":BYZANTINE_THRESHOLD");
                 }
             }
@@ -211,6 +220,7 @@ public class FrontEnd {
         for (int i = 0; i < PortConfig.ALL_REPLICAS.length; i++) {
             String rid = String.valueOf(i + 1);
             if (!ctx.replicaResults.containsKey(rid)) {
+                System.out.println("FE: [" + ctx.requestID + "] CRASH_SUSPECT sent for replica " + rid);
                 sendToAllRMs("CRASH_SUSPECT:" + ctx.requestID + ":" + ctx.seqNum + ":" + rid);
             }
         }
@@ -253,6 +263,7 @@ public class FrontEnd {
 
                     RequestContext ctx = pendingRequests.get(reqID);
                     if (ctx != null) {
+                        System.out.println("FE: [" + reqID + "] result from replica " + replicaID);
                         ctx.addResult(replicaID, result.toString(), seqNum);
                     }
                 } else if (msg.getType() == UDPMessage.Type.REPLICA_READY) {

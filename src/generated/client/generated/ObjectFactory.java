@@ -36,30 +36,18 @@ public class ObjectFactory {
     private final static QName _UpdateReservation_QNAME = new QName("http://server/", "updateReservation");
     private final static QName _UpdateReservationResponse_QNAME = new QName("http://server/", "updateReservationResponse");
     private final static QName _ListCustomerReservations_QNAME = new QName("http://server/", "listCustomerReservations");
-    private final static QName _LoadStateSnapshot_QNAME = new QName("http://server/", "loadStateSnapshot");
-    private final static QName _GetStateSnapshot_QNAME = new QName("http://server/", "getStateSnapshot");
     private final static QName _RemoveVehicleResponse_QNAME = new QName("http://server/", "removeVehicleResponse");
     private final static QName _ReserveVehicle_QNAME = new QName("http://server/", "reserveVehicle");
     private final static QName _ReserveVehicleResponse_QNAME = new QName("http://server/", "reserveVehicleResponse");
     private final static QName _AddToWaitListResponse_QNAME = new QName("http://server/", "addToWaitListResponse");
     private final static QName _CancelReservation_QNAME = new QName("http://server/", "cancelReservation");
     private final static QName _AddToWaitList_QNAME = new QName("http://server/", "addToWaitList");
-    private final static QName _GetStateSnapshotResponse_QNAME = new QName("http://server/", "getStateSnapshotResponse");
-    private final static QName _LoadStateSnapshotResponse_QNAME = new QName("http://server/", "loadStateSnapshotResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: client.generated
      * 
      */
     public ObjectFactory() {
-    }
-
-    /**
-     * Create an instance of {@link GetStateSnapshot }
-     * 
-     */
-    public GetStateSnapshot createGetStateSnapshot() {
-        return new GetStateSnapshot();
     }
 
     /**
@@ -84,14 +72,6 @@ public class ObjectFactory {
      */
     public ListCustomerReservations createListCustomerReservations() {
         return new ListCustomerReservations();
-    }
-
-    /**
-     * Create an instance of {@link LoadStateSnapshot }
-     * 
-     */
-    public LoadStateSnapshot createLoadStateSnapshot() {
-        return new LoadStateSnapshot();
     }
 
     /**
@@ -175,27 +155,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link LoadStateSnapshotResponse }
-     * 
-     */
-    public LoadStateSnapshotResponse createLoadStateSnapshotResponse() {
-        return new LoadStateSnapshotResponse();
-    }
-
-    /**
      * Create an instance of {@link AddToWaitList }
      * 
      */
     public AddToWaitList createAddToWaitList() {
         return new AddToWaitList();
-    }
-
-    /**
-     * Create an instance of {@link GetStateSnapshotResponse }
-     * 
-     */
-    public GetStateSnapshotResponse createGetStateSnapshotResponse() {
-        return new GetStateSnapshotResponse();
     }
 
     /**
@@ -339,24 +303,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link LoadStateSnapshot }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://server/", name = "loadStateSnapshot")
-    public JAXBElement<LoadStateSnapshot> createLoadStateSnapshot(LoadStateSnapshot value) {
-        return new JAXBElement<LoadStateSnapshot>(_LoadStateSnapshot_QNAME, LoadStateSnapshot.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetStateSnapshot }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://server/", name = "getStateSnapshot")
-    public JAXBElement<GetStateSnapshot> createGetStateSnapshot(GetStateSnapshot value) {
-        return new JAXBElement<GetStateSnapshot>(_GetStateSnapshot_QNAME, GetStateSnapshot.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link RemoveVehicleResponse }{@code >}}
      * 
      */
@@ -408,24 +354,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://server/", name = "addToWaitList")
     public JAXBElement<AddToWaitList> createAddToWaitList(AddToWaitList value) {
         return new JAXBElement<AddToWaitList>(_AddToWaitList_QNAME, AddToWaitList.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetStateSnapshotResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://server/", name = "getStateSnapshotResponse")
-    public JAXBElement<GetStateSnapshotResponse> createGetStateSnapshotResponse(GetStateSnapshotResponse value) {
-        return new JAXBElement<GetStateSnapshotResponse>(_GetStateSnapshotResponse_QNAME, GetStateSnapshotResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link LoadStateSnapshotResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://server/", name = "loadStateSnapshotResponse")
-    public JAXBElement<LoadStateSnapshotResponse> createLoadStateSnapshotResponse(LoadStateSnapshotResponse value) {
-        return new JAXBElement<LoadStateSnapshotResponse>(_LoadStateSnapshotResponse_QNAME, LoadStateSnapshotResponse.class, null, value);
     }
 
 }

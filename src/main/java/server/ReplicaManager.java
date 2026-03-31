@@ -229,9 +229,14 @@ public class ReplicaManager {
                         case VOTE_CRASH:
                             handleVote(msg, socket);
                             break;
-                        case STATE_REQUEST:
-                            handleStateRequest(msg, socket, packet);
+                        case STATE_REQUEST: {
+                            InetAddress fromAddr = packet.getAddress();
+                            int fromPort = packet.getPort();
+                            DatagramPacket frozenPacket = new DatagramPacket(new byte[0], 0, fromAddr, fromPort);
+                            new Thread(() -> handleStateRequest(msg, socket, frozenPacket),
+                                "RM" + replicaId + "-StateReq").start();
                             break;
+                        }
                         default:
                             break;
                     }

@@ -910,7 +910,7 @@ public class VehicleReservationWS {
       return msg;
     }
     String finalResult =
-        aggregateLocalAndRemoteResponses(findVehicleLocal(normalizedType), "FIND:" + normalizedType);
+        aggregateLocalAndRemoteResponses(findVehicleLocal(normalizedType), "FIND:SYSTEM:" + normalizedType);
     if (finalResult.isEmpty()) {
       finalResult = "No vehicles found of type: " + normalizedType;
     }
@@ -925,7 +925,7 @@ public class VehicleReservationWS {
     }
     String finalResult =
         aggregateLocalAndRemoteResponses(
-            listCustomerReservationsLocal(customerID), "LISTRES:" + customerID);
+            listCustomerReservationsLocal(customerID), "LISTRES:SYSTEM:" + customerID);
     if (finalResult.isEmpty()) {
       finalResult = "No reservations found for " + customerID;
     }
@@ -1031,11 +1031,28 @@ public class VehicleReservationWS {
             ? cancelReservation(parts[1], parts[2])
             : "FAIL: Invalid cancel execute request";
       case "FIND":
-        return (parts.length >= 3) ? findVehicleLocal(parts[2]) : "FAIL: Invalid find request";
+        if (parts.length >= 3) {
+          if ("SYSTEM".equals(parts[1])) {
+            // Inter-office request — return local vehicles only (avoid recursion)
+            String normalized = normalizeVehicleType(parts[2]);
+            return normalized != null ? findVehicleLocal(normalized) : "FAIL: Invalid vehicle type";
+          } else {
+            // Request from Sequencer — aggregate across all offices
+            return findVehicle(parts[1], parts[2]);
+          }
+        }
+        return "FAIL: Invalid find request";
       case "LISTRES":
-        return (parts.length >= 2)
-            ? listCustomerReservationsLocal(parts[1])
-            : "FAIL: Invalid list request";
+        if (parts.length >= 2) {
+          if ("SYSTEM".equals(parts[1]) && parts.length >= 3) {
+            // Inter-office request — return local reservations only (avoid recursion)
+            return listCustomerReservationsLocal(parts[2]);
+          } else {
+            // Request from Sequencer — aggregate across all offices
+            return listCustomerReservations(parts[1]);
+          }
+        }
+        return "FAIL: Invalid list request";
       case "WAITLIST":
         return (parts.length >= 5)
             ? addToWaitListLocal(parts[1], parts[2], parts[3], parts[4])
