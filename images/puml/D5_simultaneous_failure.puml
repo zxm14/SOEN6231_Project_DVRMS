@@ -1,0 +1,79 @@
+@startuml
+skinparam backgroundColor white
+title D5: Simultaneous Crash + Byzantine\n(Core Project 2 Scenario: 1 crash + 1 Byzantine at same time)
+
+actor "Client" as C
+participant "FE" as FE #E3F2FD
+participant "Sequencer" as SEQ #FFF8E1
+participant "R1\n(correct)" as R1 #E8F5E9
+participant "R2\n**CRASHED**" as R2 #FFD0D0
+participant "R3\n**Byzantine**" as R3 #FFD0D0
+participant "R4\n(correct)" as R4 #E8F5E9
+participant "All RMs" as RM #FFECB3
+
+== Dual Fault: R2 killed, R3 returns random ==
+
+C -> FE : SOAP request
+FE -> SEQ : REQUEST
+SEQ -> R1 : EXECUTE(s_g)
+SEQ -> R2 : EXECUTE(s_g)
+SEQ -> R3 : EXECUTE(s_g)
+SEQ -> R4 : EXECUTE(s_g)
+
+R1 -> FE : RESULT: "SUCCESS"
+R4 -> FE : RESULT: "SUCCESS"
+
+note over FE #C8E6C9
+  **f+1 = 2 identical (R1 + R4)**
+  Correct result returned immediately
+  System works despite dual fault!
+end note
+
+FE --> C : "SUCCESS"
+
+R3 -> FE : RESULT: "WRONG_DATA"
+note over FE : R3 differs from majority\nbyzantineCount[R3]++
+FE -> RM : INCORRECT_RESULT(R3)
+
+note over FE #FFCCCC
+  Timeout expired: R2 never responded
+end note
+FE -> RM : CRASH_SUSPECT(R2)
+
+note over FE, RM
+  **Key: from 4 replicas, 3 respond (R2 crashed).**
+  **Of 3 responses, 1 is Byzantine (R3).**
+  **2 correct (R1, R4) still provide f+1=2 match.**
+end note
+
+== Parallel Recovery ==
+
+RM -> RM : VOTE: R2 crashed (majority confirms)
+RM -> R1 : STATE_REQUEST
+R1 -> RM : STATE_TRANSFER
+
+RM -> R2 : Launch new R2
+RM -> R2 : INIT_STATE
+R2 -> SEQ : READY
+SEQ -> R2 : Replay missed
+note over R2 #E8F5E9 : R2 recovered
+
+== Byzantine Threshold (after 3 consecutive) ==
+
+note over FE : After 3 consecutive incorrect\nfrom R3: REPLACE_REQUEST
+FE -> RM : REPLACE_REQUEST(R3, BYZANTINE)
+RM -> RM : Vote: majority agrees
+RM -> R3 : SHUTDOWN
+RM -> R1 : STATE_REQUEST
+R1 -> RM : STATE_TRANSFER
+
+RM -> R3 : Launch new R3
+RM -> R3 : INIT_STATE
+R3 -> SEQ : READY
+SEQ -> R3 : Replay missed
+note over R3 #E8F5E9 : R3 replaced
+
+note over R1, R4 #C8E6C9
+  **System fully restored: 4 healthy replicas**
+end note
+@enduml

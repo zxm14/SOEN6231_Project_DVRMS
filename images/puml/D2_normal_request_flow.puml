@@ -1,0 +1,66 @@
+@startuml
+skinparam backgroundColor white
+skinparam sequenceMessageAlign center
+title D2: Normal Request Flow — 5 Phases of Active Replication\n(Kaashoek's Variant, No Faults)
+
+actor "Client" as C
+participant "FE\n(Student 1)" as FE #E3F2FD
+participant "Sequencer\n(Student 3)" as SEQ #FFF8E1
+participant "Replica 1" as R1 #E8F5E9
+participant "Replica 2" as R2 #E8F5E9
+participant "Replica 3" as R3 #E8F5E9
+participant "Replica 4" as R4 #E8F5E9
+
+== Phase 1: Request ==
+
+C -> FE : SOAP: reserveVehicle(\nMTLU1111, MTL1001,\n01032026, 10032026)
+activate FE
+FE -> FE : Generate unique requestID
+
+FE -> SEQ : UDP REQUEST:\nreqID, feHost, fePort,\noperation, params
+activate SEQ
+SEQ --> FE : ACK
+
+== Phase 2: Coordination (Total Order via Sequencer) ==
+
+SEQ -> SEQ : s_g = sequenceCounter++\nStore in historyBuffer[s_g]
+
+SEQ -> R1 : EXECUTE: s_g, reqID,\nfeHost, fePort, op, params
+SEQ -> R2 : EXECUTE: s_g, reqID,\nfeHost, fePort, op, params
+SEQ -> R3 : EXECUTE: s_g, reqID,\nfeHost, fePort, op, params
+SEQ -> R4 : EXECUTE: s_g, reqID,\nfeHost, fePort, op, params
+deactivate SEQ
+
+R1 --> SEQ : ACK
+R2 --> SEQ : ACK
+R3 --> SEQ : ACK
+R4 --> SEQ : ACK
+
+== Phase 3: Execution (State Machine — same order, same result) ==
+
+R1 -> R1 : s_g == r_g?\nYes: execute via\nVehicleReservationWS\nr_g++
+R2 -> R2 : Execute (same order)
+R3 -> R3 : Execute (same order)
+R4 -> R4 : Execute (same order)
+
+== Phase 4: Agreement (none needed — total order guarantees) ==
+
+note over R1, R4 : No agreement phase needed.\nSequencer total order ensures identical execution.
+
+== Phase 5: Response (FE Voting: f+1 = 2 identical) ==
+
+R1 -> FE : RESULT: s_g, reqID, R1,\n"SUCCESS: Reserved MTL1001.\nCost: 80.0 Remaining: 920.0"
+R2 -> FE : RESULT: s_g, reqID, R2,\n"SUCCESS: Reserved MTL1001.\nCost: 80.0 Remaining: 920.0"
+
+note over FE #E3F2FD
+  **2 identical results received (f+1=2)**
+  Return to client immediately
+end note
+
+FE --> C : "SUCCESS: Reserved MTL1001.\nCost: 80.0 Remaining budget: 920.0"
+deactivate FE
+
+R3 -> FE : RESULT (same — late)
+R4 -> FE : RESULT (same — late)
+note over FE : All 4 match: byzantineCount\nreset to 0 for all replicas
+@enduml

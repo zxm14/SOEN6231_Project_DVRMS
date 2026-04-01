@@ -1,0 +1,58 @@
+@startuml
+skinparam backgroundColor white
+skinparam nodeBackgroundColor #FAFAFA
+skinparam defaultFontSize 11
+title D7: Local Deployment Diagram\n(All components on localhost, port-based isolation)
+
+node "localhost" as HOST #F5F5F5 {
+
+  package "Front End" #E3F2FD {
+    artifact "FrontEnd" as FE
+    note right of FE : SOAP:8080\nUDP:9000
+  }
+
+  package "Sequencer" #FFF8E1 {
+    artifact "Sequencer" as SEQ
+    note right of SEQ : UDP:9100
+  }
+
+  package "Replica 1 + RM1" #E8F5E9 {
+    artifact "ReplicaLauncher 1 + RM1" as R1
+    note right of R1 : Replica:6001, RM:7001\nMTL:5001, WPG:5002, BNF:5003
+  }
+
+  package "Replica 2 + RM2" #E8F5E9 {
+    artifact "ReplicaLauncher 2 + RM2" as R2
+    note right of R2 : Replica:6002, RM:7002\nMTL:5011, WPG:5012, BNF:5013
+  }
+
+  package "Replica 3 + RM3" #E8F5E9 {
+    artifact "ReplicaLauncher 3 + RM3" as R3
+    note right of R3 : Replica:6003, RM:7003\nMTL:5021, WPG:5022, BNF:5023
+  }
+
+  package "Replica 4 + RM4" #FCE4EC {
+    artifact "ReplicaLauncher 4 + RM4" as R4
+    note right of R4 : Replica:6004, RM:7004\nMTL:5031, WPG:5032, BNF:5033
+  }
+
+}
+
+FE -down-> SEQ : UDP (REQUEST)
+SEQ -down-> R1 : UDP (EXECUTE)
+SEQ -down-> R2 : UDP (EXECUTE)
+SEQ -down-> R3 : UDP (EXECUTE)
+SEQ -down-> R4 : UDP (EXECUTE)
+
+R1 -up-> FE : UDP (RESULT)
+R2 -up-> FE : UDP (RESULT)
+R3 -up-> FE : UDP (RESULT)
+R4 -up-> FE : UDP (RESULT)
+
+note bottom of HOST
+  All components started independently via:
+  java server.Sequencer
+  java server.ReplicaManager N  (N = 1..4, launches Replica N)
+  java server.FrontEnd
+end note
+@enduml

@@ -1,0 +1,85 @@
+@startuml
+skinparam backgroundColor white
+title D4: Crash Fault — Timeout Detection, RM Heartbeat Verification, Consensus, Recovery
+
+participant "FE" as FE #E3F2FD
+participant "Sequencer" as SEQ #FFF8E1
+participant "R1 (correct)" as R1 #E8F5E9
+participant "R2 **CRASHED**" as R2 #FFD0D0
+participant "R3 (correct)" as R3 #E8F5E9
+participant "R4 (correct)" as R4 #E8F5E9
+participant "RM1" as RM1 #FFECB3
+participant "RM2" as RM2 #FFECB3
+participant "RM3" as RM3 #FFECB3
+participant "RM4" as RM4 #FFECB3
+
+== Request: R2 does not respond ==
+
+FE -> SEQ : REQUEST
+SEQ -> R1 : EXECUTE(s_g)
+SEQ -> R2 : EXECUTE(s_g)
+SEQ -> R3 : EXECUTE(s_g)
+SEQ -> R4 : EXECUTE(s_g)
+
+R1 -> FE : RESULT (correct)
+R3 -> FE : RESULT (correct)
+note over FE : f+1=2 match => return to client
+
+note over FE #FFCCCC
+  Timeout = 2 x slowestResponseTime
+  R2 did not respond!
+end note
+
+FE -> RM1 : CRASH_SUSPECT(reqID, s_g, R2)
+FE -> RM2 : CRASH_SUSPECT(R2)
+FE -> RM3 : CRASH_SUSPECT(R2)
+FE -> RM4 : CRASH_SUSPECT(R2)
+
+== RM Heartbeat Verification ==
+
+RM1 -> R2 : HEARTBEAT_CHECK
+RM2 -> R2 : HEARTBEAT_CHECK
+RM3 -> R2 : HEARTBEAT_CHECK
+RM4 -> R2 : HEARTBEAT_CHECK
+
+note over R2 #FFD0D0 : No response (process dead)
+
+== RM Consensus (2000 ms Vote Window) ==
+
+RM1 -> RM2 : VOTE_CRASH:R2:CRASH_CONFIRMED:RM1
+RM1 -> RM3 : VOTE_CRASH:R2:CRASH_CONFIRMED:RM1
+RM1 -> RM4 : VOTE_CRASH:R2:CRASH_CONFIRMED:RM1
+RM2 -> RM1 : VOTE_CRASH:R2:CRASH_CONFIRMED:RM2
+RM2 -> RM3 : VOTE_CRASH:R2:CRASH_CONFIRMED:RM2
+RM2 -> RM4 : VOTE_CRASH:R2:CRASH_CONFIRMED:RM2
+RM3 -> RM1 : VOTE_CRASH:R2:CRASH_CONFIRMED:RM3
+RM3 -> RM2 : VOTE_CRASH:R2:CRASH_CONFIRMED:RM3
+RM3 -> RM4 : VOTE_CRASH:R2:CRASH_CONFIRMED:RM3
+RM4 -> RM1 : VOTE_CRASH:R2:CRASH_CONFIRMED:RM4
+RM4 -> RM2 : VOTE_CRASH:R2:CRASH_CONFIRMED:RM4
+RM4 -> RM3 : VOTE_CRASH:R2:CRASH_CONFIRMED:RM4
+
+note over RM1, RM4 #FFECB3
+  After 2000 ms vote window:
+  majority CRASH_CONFIRMED (>50%)
+  RM2 responsible for replacing R2
+end note
+
+== State Transfer & Recovery ==
+
+RM2 -> R1 : STATE_REQUEST
+R1 -> RM2 : STATE_TRANSFER(\nvehicleDB, reservations,\nwaitList, budgets,\nlastSeq)
+
+RM2 -> RM2 : Launch new R2 process
+RM2 -> R2 : INIT_STATE(snapshot)
+R2 -> R2 : Load state\nSet r_g = lastSeq + 1
+
+RM2 -> SEQ : REPLICA_READY(R2, host, port, lastSeq)
+SEQ -> R2 : Replay missed EXECUTE\nmessages from historyBuffer
+SEQ -> RM2 : ACK:REPLICA_READY:R2
+
+R2 -> R2 : Execute replayed requests\nin total order
+RM2 -> FE : REPLICA_READY(R2)
+
+note over R2 #E8F5E9 : R2 recovered and\nrejoined replica group
+@enduml

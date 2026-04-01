@@ -1,0 +1,105 @@
+@startuml
+skinparam backgroundColor white
+skinparam classAttributeIconSize 0
+skinparam classBackgroundColor #FAFAFA
+skinparam classBorderColor #666666
+title D6: FT-DVRMS Class Diagram\n(FE, Sequencer, Replica, RM, and existing A3 classes)
+
+class "FrontEnd\n(Student 1)" as FE #E3F2FD {
+  - pendingRequests : ConcurrentHashMap<String, RequestContext>
+  - byzantineCount : ConcurrentHashMap<String, AtomicInteger>
+  - slowestResponseTime : AtomicLong
+  --
+  + handleSOAPRequest(operation, params) : String
+  - forwardToSequencer(reqId, op, params)
+  - collectAndVote(reqId) : String
+  - reportIncorrect(reqId, seqNum, replicaId)
+  - reportCrashSuspect(reqId, seqNum, replicaId)
+  - sendReplaceRequest(replicaId, reason)
+}
+
+class "Sequencer\n(Student 3)" as SEQ #FFF8E1 {
+  - sequenceCounter : AtomicInteger
+  - historyBuffer : ConcurrentHashMap<Integer, Message>
+  - pendingMessages : ConcurrentHashMap<Integer, PendingMessage>
+  - replicaAddresses : List<InetSocketAddress>
+  --
+  + receiveRequest(reqId, feAddr, op, params)
+  - reliableMulticast(seqNum, msg)
+  - handleNACK(replicaId, seqStart, seqEnd)
+  - handleReady(replicaId, lastSeq)
+}
+
+class "Replica\n(All Students)" as REP #E8F5E9 {
+  - replicaId : String
+  - nextExpectedSeq : int
+  - holdbackQueue : PriorityQueue<Message>
+  - officeServers : Map<String, VehicleReservationWS>
+  - byzantineMode : boolean
+  --
+  + receiveExecute(seqNum, reqId, feAddr, op, params)
+  - executeInOrder(seqNum, message)
+  - sendResultToFE(seqNum, replicaId, result, feAddr)
+  + getStateSnapshot() : StateSnapshot
+  + loadStateSnapshot(snapshot)
+  + handleHeartbeat() : status
+}
+
+class "ReplicaManager\n(Student 2)" as RM #FFECB3 {
+  - managedReplicaId : String
+  - peerRMs : List<InetSocketAddress>
+  --
+  + handleIncorrectResult(reqId, seqNum, replicaId)
+  + handleCrashSuspect(reqId, seqNum, replicaId)
+  + handleReplaceRequest(replicaId, reason)
+  - heartbeatCheck(replicaId) : boolean
+  - initiateVote(replicaId, faultType) : boolean
+  - replaceReplica(replicaId)
+  - transferState(fromReplica, toReplica)
+  - notifySequencer(replicaId, lastSeq)
+}
+
+class "VehicleReservationWS\n(A3 business logic)" as WS {
+  - serverID : String
+  - vehicleDB : ConcurrentHashMap<String, Vehicle>
+  - reservations : ConcurrentHashMap<String, List<Reservation>>
+  - waitList : ConcurrentHashMap<String, List<WaitlistEntry>>
+  - customerBudget : static ConcurrentHashMap<String, Double>
+  - crossOfficeCount : static ConcurrentHashMap<String, Set<String>>
+  --
+  + addVehicle(...) : String
+  + removeVehicle(...) : String
+  + reserveVehicle(...) : String
+  + cancelReservation(...) : String
+  + updateReservation(...) : String
+  + findVehicle(...) : String
+  + listAvailableVehicles(...) : String
+  + listCustomerReservations(...) : String
+  + handleUDPRequest(request) : String
+}
+
+class "RequestContext" as RC {
+  - requestId : String
+  - resultMap : Map<String, String>
+  - future : CompletableFuture<String>
+  - startTime : long
+}
+
+class "StateSnapshot" as SS {
+  - vehicleDB : Map
+  - reservations : Map
+  - waitList : Map
+  - customerBudget : Map
+  - crossOfficeCount : Map
+  - lastSequenceNumber : int
+}
+
+FE "1" -down-> "1" SEQ : sends REQUEST
+SEQ "1" -down-> "4" REP : multicasts EXECUTE
+REP "4" -up-> "1" FE : sends RESULT
+FE "1" -right-> "4" RM : reports faults
+RM "1" --> "1" REP : manages lifecycle
+REP "1" --> "3" WS : delegates business ops
+FE ..> RC : creates per request
+REP ..> SS : serializes/deserializes
+@enduml

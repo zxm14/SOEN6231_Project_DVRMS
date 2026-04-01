@@ -1,0 +1,85 @@
+@startuml
+skinparam backgroundColor white
+title D3: Byzantine Fault — 3 Consecutive Incorrect Results, Replacement, State Transfer
+
+actor "Client" as C
+participant "FE" as FE #E3F2FD
+participant "Sequencer" as SEQ #FFF8E1
+participant "R1 (correct)" as R1 #E8F5E9
+participant "R2 (correct)" as R2 #E8F5E9
+participant "R3 **Byzantine**" as R3 #FFD0D0
+participant "R4 (correct)" as R4 #E8F5E9
+participant "All RMs" as RM #FFECB3
+
+== Request N: 1st incorrect from R3 (byzantineCount[R3]=1) ==
+
+C -> FE : SOAP request
+FE -> SEQ : REQUEST
+SEQ -> R1 : EXECUTE(s_g=N)
+SEQ -> R2 : EXECUTE(s_g=N)
+SEQ -> R3 : EXECUTE(s_g=N)
+SEQ -> R4 : EXECUTE(s_g=N)
+
+R1 -> FE : RESULT: "SUCCESS"
+R2 -> FE : RESULT: "SUCCESS"
+note over FE : f+1=2 match => return to client
+FE --> C : "SUCCESS"
+
+R3 -> FE : RESULT: "RANDOM_GARBAGE"
+note over FE #FFCCCC : R3 differs! byzantineCount[R3] = 1
+FE -> RM : INCORRECT_RESULT(reqID, N, R3)
+
+== Request N+1: 2nd incorrect (byzantineCount[R3]=2) ==
+
+C -> FE : SOAP request
+FE -> SEQ : REQUEST
+SEQ -> R1 : EXECUTE(N+1)
+SEQ -> R2 : EXECUTE(N+1)
+SEQ -> R3 : EXECUTE(N+1)
+SEQ -> R4 : EXECUTE(N+1)
+R1 -> FE : correct
+R4 -> FE : correct
+FE --> C : correct result
+R3 -> FE : wrong result
+note over FE : byzantineCount[R3] = 2
+FE -> RM : INCORRECT_RESULT(R3)
+
+== Request N+2: 3rd consecutive => REPLACE_REQUEST ==
+
+C -> FE : SOAP request
+FE -> SEQ : REQUEST
+SEQ -> R1 : EXECUTE(N+2)
+SEQ -> R2 : EXECUTE(N+2)
+SEQ -> R3 : EXECUTE(N+2)
+SEQ -> R4 : EXECUTE(N+2)
+R2 -> FE : correct
+R4 -> FE : correct
+FE --> C : correct result
+R3 -> FE : wrong result
+
+note over FE #FFCCCC
+  byzantineCount[R3] = 3
+  **Threshold reached!**
+end note
+
+FE -> RM : INCORRECT_RESULT(R3)
+FE -> RM : **REPLACE_REQUEST(R3, BYZANTINE_THRESHOLD)**
+
+== RM Consensus & State Transfer ==
+
+RM -> RM : Vote: majority agrees R3 faulty
+RM -> R3 : SHUTDOWN (kill faulty process)
+RM -> R1 : STATE_REQUEST
+R1 -> RM : STATE_TRANSFER(vehicleDB,\nreservations, waitList,\nbudgets, lastSeq=N+2)
+
+RM -> R3 : Launch new R3 process
+RM -> R3 : INIT_STATE(snapshot, lastSeq=N+2)
+R3 -> R3 : Load state, set r_g = N+3
+R3 -> SEQ : READY(R3, lastSeq=N+2)
+SEQ -> R3 : Replay any missed EXECUTE\nfrom historyBuffer
+
+RM -> SEQ : REPLICA_READY(R3, host, port, lastSeq)
+RM -> FE : REPLICA_READY(R3)
+
+note over R3 #E8F5E9 : R3 recovered — healthy
+@enduml

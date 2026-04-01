@@ -1,0 +1,72 @@
+@startuml
+skinparam backgroundColor white
+skinparam roundcorner 8
+skinparam defaultFontSize 11
+skinparam componentStyle rectangle
+skinparam linetype ortho
+
+title D1: FT-DVRMS System Architecture\n(Kaashoek's Sequencer-Based Total Order, 4 Replicas)
+
+package "Client Tier" #FAFAFA {
+  [ManagerClient] as MC
+  [CustomerClient] as CC
+}
+
+package "Front End\n(Student 1)" #E3F2FD {
+  [FE\nSOAP:8080 | UDP:9000\nVoting: f+1=2 identical\nTimeout: 2x slowest] as FE
+}
+
+package "Sequencer\n(Student 3)" #FFF8E1 {
+  [Sequencer\nUDP:9100\nAssigns s_g (seq#)\nHistory buffer for replay] as SEQ
+}
+
+package "Replica 1 + RM 1 (192.168.1.21)" #E8F5E9 {
+  [R1: MTL(5001) WPG(5002) BNF(5003)\nReplica UDP:6001] as R1
+  [RM1 UDP:7001] as RM1
+}
+
+package "Replica 2 + RM 2 (192.168.1.22)" #E8F5E9 {
+  [R2: MTL(5011) WPG(5012) BNF(5013)\nReplica UDP:6002] as R2
+  [RM2 UDP:7002] as RM2
+}
+
+package "Replica 3 + RM 3 (192.168.1.23)" #E8F5E9 {
+  [R3: MTL(5021) WPG(5022) BNF(5023)\nReplica UDP:6003] as R3
+  [RM3 UDP:7003] as RM3
+}
+
+package "Replica 4 + RM 4 (192.168.1.24)" #FCE4EC {
+  [R4: MTL(5031) WPG(5032) BNF(5033)\nReplica UDP:6004] as R4
+  [RM4 UDP:7004] as RM4
+}
+
+MC -down-> FE : SOAP/HTTP
+CC -down-> FE : SOAP/HTTP
+
+FE -down-> SEQ : "1. REQUEST\n(Kaashoek: FE sends\nonly to Sequencer)"
+
+SEQ -down-> R1 : "2. EXECUTE(s_g)"
+SEQ -down-> R2 : "2. EXECUTE(s_g)"
+SEQ -down-> R3 : "2. EXECUTE(s_g)"
+SEQ -down-> R4 : "2. EXECUTE(s_g)"
+
+R1 -up-> FE : "5. RESULT"
+R2 -up-> FE : "5. RESULT"
+R3 -up-> FE : "5. RESULT"
+R4 -up-> FE : "5. RESULT"
+
+FE .down.> RM1 : INCORRECT_RESULT\n/ CRASH_SUSPECT
+FE .down.> RM2
+FE .down.> RM3
+FE .down.> RM4
+
+RM1 .right.> RM2 : VOTE / STATE
+RM2 .right.> RM3
+RM3 .right.> RM4
+
+note bottom of R4
+  4th replica enables simultaneous
+  1 crash + 1 Byzantine tolerance
+  (Project 2 requirement)
+end note
+@enduml
