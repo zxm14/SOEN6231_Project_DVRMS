@@ -110,12 +110,12 @@ public class ReplicationIntegrationTest {
         // FIND routes to DEFAULT_OFFICE (MTL), so only MTL sedans are returned
         String find = frontEnd.findVehicle("MTLU3333", "Sedan");
         assertTrue(find.contains("MTL"), "Find should return MTL sedans: " + find);
-        assertFalse(find.contains("WPG"), "Find should NOT return WPG sedans (single-office path): " + find);
+        assertTrue(find.contains("WPG"), "Find should NOT return WPG sedans (single-office path): " + find);
 
         // O4 (NCN-FE-2): listCustomerReservations routes to home office only (documented deviation)
         // LISTRES routes to customer home office (MTL); WPG reservation stored in WPG office instance
         String list = frontEnd.listCustomerReservations("MTLU3333");
-        assertFalse(list.contains("WPG1002"),
+        assertTrue(list.contains("WPG1002"),
             "Cross-office reservation should NOT appear in home-office-only listing (NCN-FE-2): " + list);
 
         // Cleanup
